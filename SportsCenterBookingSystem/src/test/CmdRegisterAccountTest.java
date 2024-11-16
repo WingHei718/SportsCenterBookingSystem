@@ -15,7 +15,7 @@ public class CmdRegisterAccountTest {
 	    public void testExecute_RegisterAdminSuccess() {
 	        // Arrange
 	        SportsCenter sportsCenter = SportsCenter.getInstance();
-	        String input = "A\n001\n123456\n123456";
+	        String input = "a\n005\n123456\n123456";
 	        StringReader stringReader = new StringReader(input);
 	        Scanner scanner = new Scanner(stringReader);
 
@@ -29,7 +29,7 @@ public class CmdRegisterAccountTest {
 	    public void testExecute_RegisterNormalUserSuccess() {
 	        // Arrange
 	        SportsCenter sportsCenter = SportsCenter.getInstance();
-	        String input = "N\n002\npassword\npassword";
+	        String input = "n\n006\npassword\npassword";
 	        StringReader stringReader = new StringReader(input);
 	        Scanner scanner = new Scanner(stringReader);
 

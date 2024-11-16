@@ -19,52 +19,35 @@ public class CmdMarkClosingDateTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
         System.setOut(new PrintStream(outContent));
-
-        // Mocking the input for marking a closing date
         String inputString = "241001\nY\n";
         Scanner scanner = new Scanner(inputString);
-
-        // Act
         cmdMarkClosingDate.execute(scanner);
-
-        // Assert
         String output = outContent.toString();
         assertTrue("Should contain confirmation message", output.contains("The date you would like to mark as closing date is 241001, are you confirmed to mark? (Y/N):"));
 
-        // Restore standard output
         System.setOut(originalOut);
 
-        // Close the scanner
         scanner.close();
     }
 
     @Test
     public void testExecuteAlreadyMarkedClosingDate() {
-        // Arrange
         CmdMarkClosingDate cmdMarkClosingDate = new CmdMarkClosingDate();
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
         System.setOut(new PrintStream(outContent));
 
-        // Add a closing date first
         SportsCenter sportsCenter = SportsCenter.getInstance();
         sportsCenter.addClosingDate("241001");
-
-        // Mocking the input for marking an already marked closing date
         String inputString = "241001\n";
         Scanner scanner = new Scanner(inputString);
-
-        // Act
         cmdMarkClosingDate.execute(scanner);
 
-        // Assert
         String output = outContent.toString();
         assertTrue("Should contain already marked message", output.contains("The date was already marked as closing date."));
 
-        // Restore standard output
         System.setOut(originalOut);
 
-        // Close the scanner
         scanner.close();
     }
 }
