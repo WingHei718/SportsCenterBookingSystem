@@ -137,12 +137,12 @@ public class BookingTest {
     public void testToString() {
         RoomType roomType = new RoomType("001", "Badminton", 10);
         Room room = new Room("101", roomType);
-        Booking booking = new Booking(room, "001", "20240520", 10, 12, 100, "N", "BK001");
+        Booking booking = new Booking(room, "001", "240520", 10, 12, 100, "N", "BK001");
 
         String bookingString = booking.toString();
         assertTrue("String should contain room ID", bookingString.contains(room.getRoomID()));
         assertTrue("String should contain user ID", bookingString.contains("001"));
-        assertTrue("String should contain date", bookingString.contains("20240520"));
+        assertTrue("String should contain date", bookingString.contains("240520"));
         assertTrue("String should contain start time", bookingString.contains("10"));
         assertTrue("String should contain end time", bookingString.contains("12"));
         assertTrue("String should contain price paid", bookingString.contains("100"));
@@ -153,17 +153,17 @@ public class BookingTest {
 	@Test
 	public void testViewUserBookingString() {
 		Room room = new Room("101", new RoomType("001", "Badminton", 10));
-		Booking booking = new Booking(room, "001", "20240520", 10, 12, 100, "N", "BK001");
+		Booking booking = new Booking(room, "001", "240520", 10, 12, 100, "N", "BK001");
 		String result = booking.viewUserBookingString();
-	    String expected = "Booking ID: BK001 Room ID: 101 Room Type: Badminton Date: 20240520 Start Time: 10 End Time: 12 Price Paid: $100";
+	    String expected = "Booking ID: BK001 Room ID: 101 Room Type: Badminton Date: 20-May-2024 Start Time: 10 End Time: 12 Price Paid: $100";
 	    Assert.assertEquals(expected, result);
 	}
 	 @Test
 	    public void testViewRoomBookingString() {
 	        Room room = new Room("101", new RoomType("001", "Badminton", 10));
-	        Booking booking = new Booking(room, "001", "20240520", 10, 12, 100, "N", "BK001");
+	        Booking booking = new Booking(room, "001", "240520", 10, 12, 100, "N", "BK001");
 	        String result = booking.viewRoomBookingString();
-	        String expected = "Booking ID: BK001 User ID: 001 Date: 20240520 Start Time: 10 End Time: 12";
+	        String expected = "Booking ID: BK001 User ID: 001 Date: 20-May-2024 Start Time: 10 End Time: 12";
 	        Assert.assertEquals(expected, result);
 	    }
 	@Test
@@ -273,7 +273,7 @@ public class BookingTest {
         RoomType roomType = new RoomType("001", "Badminton", 10);
         Room room = new Room("101", roomType);
         
-        Booking booking = new Booking(room, "001", "20240520", 10, 12, 100, "N", "BK001");
+        Booking booking = new Booking(room, "001", "240520", 10, 12, 100, "N", "BK001");
 
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
@@ -289,6 +289,4 @@ public class BookingTest {
         assertTrue("Should contain formatted date", output.contains("Date: 20-May-2024"));
         assertTrue("Should contain time", output.contains("Time: 10 - 12"));
     }
-
 }
-
