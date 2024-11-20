@@ -28,6 +28,31 @@ public class SportsCenter {
     private ArrayList<Booking> allBookings;
     private ArrayList<String> allClosingDates;
     private static SportsCenter INSTANCE;
+    private String mainClassPath = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+    
+    
+    public enum FilePath{
+		ROOMTYPE("src/execute/assets/room_type_data.txt"),
+        ROOM("src/execute/assets/room_data.txt"),
+        USER("src/execute/assets/user_data.txt"),
+        BOOKING("src/execute/assets/booking_data.txt"),
+        CLOSINGDATE("src/execute/assets/closing_date_data.txt");
+
+		private String path;
+
+		FilePath(String string) {
+			path = string;
+		}
+		
+		public String getPath() {return path;}
+
+		public void setPath(String string) {
+			path = string;
+			
+		}
+	}
+    
+    
     
 	private SportsCenter() {
 		this.allRoomTypes = new ArrayList<>();
@@ -51,20 +76,21 @@ public class SportsCenter {
     
 	public void init() {
 		 try {
+			 	
 	            // Get the decoded path to the Main class's location
-	            String mainClassPath = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+
 	            String decodedPath = URLDecoder.decode(mainClassPath, "UTF-8");
-	            if (decodedPath.startsWith("/") && System.getProperty("os.name").toLowerCase().contains("win")) {
+	            if (decodedPath.startsWith("/") ) {
 	                decodedPath = decodedPath.substring(1);
 	            }
 	            Path basePath = Paths.get(decodedPath).getParent();
 
 	            // Resolve the data file paths relative to the base path
-	            String roomTypePath = basePath.resolve("src/execute/assets/room_type_data.txt").toString();
-	            String roomPath = basePath.resolve("src/execute/assets/room_data.txt").toString();
-	            String userPath = basePath.resolve("src/execute/assets/user_data.txt").toString();
-	            String bookingPath = basePath.resolve("src/execute/assets/booking_data.txt").toString();
-	            String closingDatePath = basePath.resolve("src/execute/assets/closing_date_data.txt").toString();
+	            String roomTypePath = basePath.resolve(FilePath.ROOMTYPE.getPath()).toString();
+	            String roomPath = basePath.resolve(FilePath.ROOM.getPath()).toString();
+	            String userPath = basePath.resolve(FilePath.USER.getPath()).toString();
+	            String bookingPath = basePath.resolve(FilePath.BOOKING.getPath()).toString();
+	            String closingDatePath = basePath.resolve(FilePath.CLOSINGDATE.getPath()).toString();
 
 
 	            // Load data using the resolved paths
@@ -74,8 +100,8 @@ public class SportsCenter {
 	            loadBooking(bookingPath);
 	            loadClosingDate(closingDatePath);
 
-	        } catch (UnsupportedEncodingException e) {
-	            e.printStackTrace();
+	        } catch (Exception e) {
+	            System.out.println("Cannot load files.");
 	        }
 		
 	}
@@ -182,7 +208,7 @@ public class SportsCenter {
 				} else if (room == null) {
 					System.out.println("Cannot find room: "+splittedData[0]);
 					
-				} else if (user == null) {
+				} else  {
 					System.out.println("Cannot find user: "+splittedData[1]);
 				}
 			}

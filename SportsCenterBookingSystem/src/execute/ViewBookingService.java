@@ -123,41 +123,8 @@ public class ViewBookingService {
 		return yearMap;
 	}
 	
-	private void printMap(TreeMap<Integer, TreeMap<Integer, TreeSet<Booking>>> yearMap) {
-		
-		for(Map.Entry<Integer, TreeMap<Integer, TreeSet<Booking>>> yearEntry: yearMap.entrySet()) {
-			int year = yearEntry.getKey();
-			System.out.println(year+":");
-			System.out.println();
-			
-			TreeMap<Integer, TreeSet<Booking>> monthMap = yearEntry.getValue();
-			
-			
-			
-			for(Map.Entry<Integer, TreeSet<Booking>> monthEntry: monthMap.entrySet()) {
-				int month = monthEntry.getKey();
-				
-
-				
-				calendar.set(Calendar.MONTH, month-1);
-				
-				
-				
-				TreeSet<Booking> booking = monthEntry.getValue();
-				
-				int count = booking.size();
-				
-				System.out.println(new SimpleDateFormat("MMM",Locale.ENGLISH).format(calendar.getTime())+":"+count);
-				
-				for(Booking b: booking) {
-					System.out.println(b.viewRoomBookingString());
-				}
-				
-				System.out.println();
-				
-			}
-		}
-	}
+	
+	
 	
 	private void printYearSummary(TreeMap<Integer, TreeMap<Integer, TreeSet<Booking>>> yearMap) {
 		int viewingYear = viewingDate.getYear();
