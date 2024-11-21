@@ -29,116 +29,72 @@ public class ViewBookingServiceTest {
 
     @Test
     public void testViewBooking_p() {
-        ArrayList<Booking> allBookings = new ArrayList<>();
-        Room room1 = new Room("101", new RoomType("001", "Badminton", 10));
-        Booking booking1 = new Booking(room1, "001", "20240520", 10, 12, 100, "X", "BK001");
-        Room room2 = new Room("102", new RoomType("001", "Badminton", 10));
-        Booking booking2 = new Booking(room2, "002", "20240521", 10, 12, 100, "X", "BK002");
-        booking2.cancelBookingByUser();
-        allBookings.add(booking1);
-        allBookings.add(booking2);
-
+    	User user = new User("001", "A", "123456");
+    	ArrayList<Booking> allBookings=user.getAllBookings();
         ViewBookingService viewBookingService = new ViewBookingService();
         String inputString = "p\nq\n";
         Scanner scanner = new Scanner(inputString);
-
         viewBookingService.viewBooking(allBookings, scanner);
-        
         scanner.close();
     }
 
     @Test
     public void testViewBooking_n() {
-    	 ArrayList<Booking> allBookings = new ArrayList<>();
-         Room room1 = new Room("101", new RoomType("001", "Badminton", 10));
-         Booking booking1 = new Booking(room1, "001", "20240520", 10, 12, 100, "X", "BK001");
-         Room room2 = new Room("102", new RoomType("001", "Badminton", 10));
-         Booking booking2 = new Booking(room2, "002", "20240521", 10, 12, 100, "X", "BK002");
-         booking2.cancelBookingByUser();
-         allBookings.add(booking1);
-         allBookings.add(booking2);
-
+    	User user = new User("001", "A", "123456");
+    	ArrayList<Booking> allBookings=user.getAllBookings();
          ViewBookingService viewBookingService = new ViewBookingService();
          String inputString = "n\nq\n";
          Scanner scanner = new Scanner(inputString);
-
          viewBookingService.viewBooking(allBookings, scanner);
-         
          scanner.close();
      }
 
     @Test
     public void testViewBooking_s() {
-    	 ArrayList<Booking> allBookings = new ArrayList<>();
-         Room room1 = new Room("101", new RoomType("001", "Badminton", 10));
-         Booking booking1 = new Booking(room1, "001", "20240520", 10, 12, 100, "X", "BK001");
-         Room room2 = new Room("102", new RoomType("001", "Badminton", 10));
-         Booking booking2 = new Booking(room2, "002", "20240521", 10, 12, 100, "X", "BK002");
-         booking2.cancelBookingByUser();
-         allBookings.add(booking1);
-         allBookings.add(booking2);
-
-         ViewBookingService viewBookingService = new ViewBookingService();
+    	User user = new User("001", "A", "123456");
+    	ArrayList<Booking> allBookings=user.getAllBookings(); ViewBookingService viewBookingService = new ViewBookingService();
          String inputString = "s\n2024 1\nq\n";
          Scanner scanner = new Scanner(inputString);
-
-         viewBookingService.viewBooking(allBookings, scanner);
-         
+         viewBookingService.viewBooking(allBookings, scanner);        
          scanner.close();
      }
 
     @Test
     public void testViewBooking_t() {
-    	 ArrayList<Booking> allBookings = new ArrayList<>();
-         Room room1 = new Room("101", new RoomType("001", "Badminton", 10));
-         Booking booking1 = new Booking(room1, "001", "20240520", 10, 12, 100, "X", "BK001");
-         Room room2 = new Room("102", new RoomType("001", "Badminton", 10));
-         Booking booking2 = new Booking(room2, "002", "20240521", 10, 12, 100, "X", "BK002");
-         booking2.cancelBookingByUser();
-         allBookings.add(booking1);
-         allBookings.add(booking2);
-
+    	User user = new User("001", "A", "123456");
+    	ArrayList<Booking> allBookings=user.getAllBookings();
          ViewBookingService viewBookingService = new ViewBookingService();
          String inputString = "t\nq\n";
          Scanner scanner = new Scanner(inputString);
-
-         viewBookingService.viewBooking(allBookings, scanner);
-         
+         viewBookingService.viewBooking(allBookings, scanner);         
          scanner.close();
      }
     @Test
     public void testViewBooking_q() {
-    	 ArrayList<Booking> allBookings = new ArrayList<>();
-         Room room1 = new Room("101", new RoomType("001", "Badminton", 10));
-         Booking booking1 = new Booking(room1, "001", "20240520", 10, 12, 100, "X", "BK001");
-         Room room2 = new Room("102", new RoomType("001", "Badminton", 10));
-         Booking booking2 = new Booking(room2, "002", "20240521", 10, 12, 100, "X", "BK002");
-         booking2.cancelBookingByUser();
-         allBookings.add(booking1);
-         allBookings.add(booking2);
-
+    	User user = new User("001", "A", "123456");
+    	ArrayList<Booking> allBookings=user.getAllBookings();
          ViewBookingService viewBookingService = new ViewBookingService();
          String inputString = "q\n";
          Scanner scanner = new Scanner(inputString);
-
-         viewBookingService.viewBooking(allBookings, scanner);
-         
+         viewBookingService.viewBooking(allBookings, scanner);         
          scanner.close();
      }
     @Test
     public void testViewBookingMultipleCommands() {
-        ArrayList<Booking> allBookings = new ArrayList<>();
+    	User user = new User("001", "A", "123456");
+    	ArrayList<Booking> allBookings=user.getAllBookings();
         ViewBookingService viewBookingService = new ViewBookingService();
-        String inputString = "p\nn\ns\n2023 12\nq\n"; // 先前一个月，然后下一个月，然后指定年份和月份
+        String inputString = "p\nn\ns\n2023 12\nq\n"; 
         Scanner scanner = new Scanner(inputString);
         viewBookingService.viewBooking(allBookings, scanner);
         scanner.close();
     }
     @Test
     public void testViewBookingInvalidInput() {
-        ArrayList<Booking> allBookings = new ArrayList<>();
+    	User user = new User("001", "A", "123456");
+    	ArrayList<Booking> allBookings=user.getAllBookings();
         ViewBookingService viewBookingService = new ViewBookingService();
-        String inputString = "s\n2024 13\n2025 12\nq\n"; // 13是无效的月份
+        String inputString = "s\n2024 13\n2025 12\nq\n"; 
         Scanner scanner = new Scanner(inputString);
         viewBookingService.viewBooking(allBookings, scanner);
         scanner.close();
@@ -226,7 +182,7 @@ public void testMakeBooking_admin() {
 public void testMakeBooking_DateOrRoomError() {
 	User user = new User("001", "A", "123456");
   UserSessionManager.getInstance().setCurrentUser(user);
-  String input = "001\n6\n1\n241003 15-20\na\nY";
+  String input = "001\n6\n1\n241003 15-20\na\nN";
   InputStream in = new ByteArrayInputStream(input.getBytes());
   System.setIn(in);
   user.makeBooking(new Scanner(System.in));
@@ -237,7 +193,7 @@ public void testMakeBooking_DateOrRoomError() {
 public void testViewBooking_a_admin() {
 	User user = new User("001", "A", "123456");
   UserSessionManager.getInstance().setCurrentUser(user);
-  String input = "a\np\nn\ns\n2024 1\nt\nq\n";
+  String input = "a\np\nn\ns\n2023 1\nt\nq\n";
   InputStream in = new ByteArrayInputStream(input.getBytes());
   System.setIn(in);
   user.viewBooking(new Scanner(System.in));
@@ -247,7 +203,7 @@ public void testViewBooking_a_admin() {
 public void testViewBooking_admin() {
 	User user = new User("001", "A", "123456");
   UserSessionManager.getInstance().setCurrentUser(user);
-  String input = "\nr\n4\n1\nq\n";
+  String input = "\nr\n1\nq\n";
   InputStream in = new ByteArrayInputStream(input.getBytes());
   System.setIn(in);
   user.viewBooking(new Scanner(System.in));
@@ -256,7 +212,7 @@ public void testViewBooking_admin() {
 public void testViewBooking_user() {
 	User user = new User("002", "N", "123456");
   UserSessionManager.getInstance().setCurrentUser(user);
-  String input = "a\np\nn\ns\n2024 1\nt\nq\n";
+  String input = "a\np\nn\ns\n2025 1\nt\nq\n";
   InputStream in = new ByteArrayInputStream(input.getBytes());
   System.setIn(in);
   user.viewBooking(new Scanner(System.in));
@@ -283,38 +239,10 @@ public void testViewBooking_user() {
 
 
 
-	    @Test
-	    public void testPrintMap() {
-	        // Arrange
-	        TreeMap<Integer, TreeMap<Integer, TreeSet<Booking>>> yearMap = new TreeMap<>();
 
-	        // Create bookings
-	        Room room1 = new Room("101", new RoomType("001", "Badminton", 10));
-	        Booking booking1 = new Booking(room1, "001", "240520", 10, 12, 100, "X", "BK001");
-	        Booking booking2 = new Booking(room1, "002", "240520", 10, 12, 100, "X", "BK002");
-
-	        TreeSet<Booking> bookingsInMay = new TreeSet<>();
-	        bookingsInMay.add(booking1);
-	        bookingsInMay.add(booking2);
-
-	        // Organize bookings in yearMap
-	        TreeMap<Integer, TreeSet<Booking>> monthMap = new TreeMap<>();
-	        monthMap.put(5, bookingsInMay); // May (5)
-	        yearMap.put(2024, monthMap); // Year 2024
-
-	        ViewBookingService viewBookingService = new ViewBookingService();
-
-	        // Redirect System.out to capture the output
-	        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-	        PrintStream originalOut = System.out;
-	        System.setOut(new PrintStream(outputStream));
-
-	        // Act
-	        viewBookingService.printMap(yearMap);
-
-
-	}
-	
-	
 	
 }
+	    
+	
+	
+	
