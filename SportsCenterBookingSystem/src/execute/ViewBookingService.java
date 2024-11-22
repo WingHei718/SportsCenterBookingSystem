@@ -339,7 +339,7 @@ public class ViewBookingService {
 									System.out.printf("%18s%2s","User:"+b.getUserID(),"");
 									break;
 									
-								case 2: //room id
+								default: //room id
 									System.out.printf("%18s%2s","Room:"+b.getRoom().getRoomID(),"");
 									break;
 							
