@@ -7,6 +7,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import execute.CmdMarkClosingDate;
@@ -16,7 +18,9 @@ import execute.RoomType;
 import execute.SportsCenter;
 import execute.User;
 
-public class CmdModifyRoomTypePriceTest {
+public class CmdModifyRoomTypePriceTest extends TestCase{
+	
+
 	
 	 @Test
 	    public void testExecute_ModifyPrice_Success() {
@@ -47,7 +51,7 @@ public class CmdModifyRoomTypePriceTest {
 	    @Test
 	    public void testExecute_PriceSameAsOriginal() {
 	    	 CmdModifyRoomTypePrice command = new CmdModifyRoomTypePrice();
-		     String inputString = "1\n40\n";
+		     String inputString = "1\n40\nY\n";
 		     Scanner scanner = new Scanner(inputString);
 		     command.execute(scanner);
 		     scanner.close();
@@ -71,7 +75,7 @@ public class CmdModifyRoomTypePriceTest {
 		     command.execute(scanner);
 		     scanner.close();
 		     
-		     sportsCenter.init();
+		     //sportsCenter.init();
 	    }
 
 

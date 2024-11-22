@@ -5,6 +5,8 @@ import execute.Main;
 import execute.SportsCenter;
 import execute.User;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -12,7 +14,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class CmdLogoutTest {
+public class CmdLogoutTest extends TestCase{
+	
+	
 
     @Test
     public void testExecute() {

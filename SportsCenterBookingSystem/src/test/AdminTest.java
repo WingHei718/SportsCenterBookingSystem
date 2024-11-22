@@ -6,8 +6,13 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 
 import execute.Admin;
 import execute.Booking;
@@ -17,7 +22,11 @@ import execute.SportsCenter;
 import execute.User;
 import execute.ViewBookingService;
 
-public class AdminTest {
+public class AdminTest extends TestCase{
+	
+
+	
+	
 		
 	@Test
 	public void testShowActionMenu_InputM() {
@@ -192,4 +201,5 @@ public class AdminTest {
 	        String expected = "12345 A password123";
 	        Assert.assertEquals(expected, result);
 	    }
+	    
 	}

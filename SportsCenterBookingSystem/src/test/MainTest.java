@@ -14,8 +14,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import execute.Admin;
@@ -29,12 +31,24 @@ import execute.SportsCenter;
 import execute.User;
 import execute.UserSessionManager;
 
-public class MainTest {
+public class MainTest extends TestCase{
+	
+	@BeforeClass
+	public static void setup(){
+
+	}
+	
+	@AfterClass
+	public static void reset() {
+		
+	}
 	
 	User testadmin;
 	RoomType testRoomType;
 	Room testRoom;
 	SportsCenter sportsCenter = SportsCenter.getInstance();
+	
+
 	
 	@Before
 	public void init() {
@@ -59,8 +73,6 @@ public class MainTest {
 			testRoom = new Room("7y1k4V", testRoomType);
 			sportsCenter.addRoom(testRoom);
 		}
-		
-
 		
 	}
 	

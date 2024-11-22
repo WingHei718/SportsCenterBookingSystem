@@ -7,6 +7,8 @@ import execute.SportsCenter;
 import execute.User;
 import execute.UserSessionManager;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -14,8 +16,18 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class CmdMarkClosingDateTest {
+public class CmdMarkClosingDateTest  extends TestCase{
+	
+	@BeforeClass
+	public static void setup(){
 
+	}
+	
+	@AfterClass
+	public static void reset() {
+		
+	}
+	
     @Test
     public void testExecuteMarkClosingDate() {
         CmdMarkClosingDate cmdMarkClosingDate = new CmdMarkClosingDate();

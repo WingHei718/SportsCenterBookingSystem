@@ -4,11 +4,24 @@ package test;
 import execute.CmdRegisterAccount;
 import java.util.Scanner;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class CmdRegisterAccountTest {
+public class CmdRegisterAccountTest extends TestCase{
+	
+	@BeforeClass
+	public static void setup(){
 
+	}
+	
+	@AfterClass
+	public static void reset() {
+		
+	}
+	
+	
 	 @Test
 	    public void testExecute_RegisterAdminSuccess() {
 		    CmdRegisterAccount command = new CmdRegisterAccount();

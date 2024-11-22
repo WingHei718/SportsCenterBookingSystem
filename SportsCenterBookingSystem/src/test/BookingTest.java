@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class BookingTest {
+public class BookingTest  extends TestCase{
 
     @Test
     public void testGetIsCancelled_True() {

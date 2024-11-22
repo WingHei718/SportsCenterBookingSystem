@@ -14,7 +14,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class CmdLoginTest {
+public class CmdLoginTest  extends TestCase{
 
     @Test
     public void testLoginSuccess() {

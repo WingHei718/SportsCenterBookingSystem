@@ -13,7 +13,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CmdAddNewRoomTest {
+public class CmdAddNewRoomTest  extends TestCase{
 
 
 	@Test
@@ -66,7 +66,7 @@ public class CmdAddNewRoomTest {
 
 	    cmdAddNewRoom.execute(scanner);
 	    scanner.close();
-	    sportsCenter.init();
+	    //sportsCenter.init();
     }
 
 	

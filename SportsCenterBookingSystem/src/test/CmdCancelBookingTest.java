@@ -19,7 +19,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class CmdCancelBookingTest {
+public class CmdCancelBookingTest  extends TestCase{
 
 	 @Test
 	    public void testExecuteCancelBooking() {
