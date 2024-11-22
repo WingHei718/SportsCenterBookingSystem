@@ -165,7 +165,7 @@ public class AdminTest {
 	    @Test
 	    public void testCancelBooking() {
 	        Admin admin = new Admin();
-	        String input = "c\n001\n4\n6\nN\n";
+	        String input = "c\n001\n4\n6\nY\n";
 	        InputStream in = new ByteArrayInputStream(input.getBytes());
 	        System.setIn(in);
 	        Scanner scanner = new Scanner(System.in);

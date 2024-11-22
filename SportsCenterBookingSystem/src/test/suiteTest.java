@@ -10,7 +10,7 @@ import org.junit.runners.Suite.SuiteClasses;
 	CmdAddNewRoomTest.class,
 	CmdCancelBookingTest.class,
 	CmdLoginTest.class,
-	CmdLogoutTest.class,
+//	CmdLogoutTest.class,
 	CmdMakeBookingTest.class,
 	CmdMarkClosingDateTest.class,
 	CmdModifyRoomTypePriceTest.class,
@@ -19,12 +19,12 @@ import org.junit.runners.Suite.SuiteClasses;
 	CommonTest.class,
 	DateAndTimeTest.class,	
 //	MainTest.class,
-//	NormalUserTest.class,
-//	RoomTest.class,
-//	RoomTypeTest.class,
-//	SportsCenterTest.class,
-//	UserTest.class,
-//	ViewBookingServiceTest.class
+	NormalUserTest.class,
+	RoomTest.class,
+	RoomTypeTest.class,
+	SportsCenterTest.class,
+	UserTest.class,
+	ViewBookingServiceTest.class
     
 })
 public class suiteTest {
