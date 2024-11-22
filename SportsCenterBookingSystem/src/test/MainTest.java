@@ -8,10 +8,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 import java.util.Scanner;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,6 +34,7 @@ public class MainTest {
 	User testadmin;
 	RoomType testRoomType;
 	Room testRoom;
+	SportsCenter sportsCenter = SportsCenter.getInstance();
 	
 	@Before
 	public void init() {
@@ -179,6 +182,15 @@ public class MainTest {
 	    cons.setAccessible(true);
 	    cons.newInstance(null);
 	}	
+	
+	
+	@After
+	public void reset() throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchFieldException {
+
+		
+		Class<?> cls = SportsCenter.class;
+
+	}
 
 	
 }
