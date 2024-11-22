@@ -7,10 +7,13 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 import java.util.Scanner;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import execute.Admin;
@@ -26,12 +29,53 @@ import execute.UserSessionManager;
 
 public class MainTest {
 	
+	User testadmin;
+	RoomType testRoomType;
+	Room testRoom;
+	
+	@Before
+	public void init() {
+		SportsCenter sportsCenter = SportsCenter.getInstance();
+		
+
+		testadmin = sportsCenter.getUserByID("testadmin");
+		if(testadmin==null){
+			testadmin = new User("testadmin", "A", "testadmin");
+			sportsCenter.addUser(testadmin);
+		}
+		
+		
+		testRoomType = sportsCenter.getRoomTypeByID("BJv9gH");
+		if(testRoomType==null){
+			testRoomType = new RoomType("BJv9gH", "testRoomType", 100);
+			sportsCenter.addRoomType(testRoomType);
+		}
+
+		testRoom = sportsCenter.getRoomByID("7y1k4V");
+		if(testRoom==null){
+			testRoom = new Room("7y1k4V", testRoomType);
+			sportsCenter.addRoom(testRoom);
+		}
+		
+
+		
+	}
+	
 	
 	@Test
 	public void testRegist() {
+		String randomUserIdStr;
+		
 		Random random = new Random();
-        int randomUserId = 1 + random.nextInt(999); 
-        String randomUserIdStr = Integer.toString(randomUserId); 
+		SportsCenter sportsCenter = SportsCenter.getInstance();
+		do {
+			int randomUserId = 1 + random.nextInt(999); 
+			randomUserIdStr = Integer.toString(randomUserId); 
+		}
+		while(sportsCenter.getUserByID(randomUserIdStr)!=null);
+		
+        
+        
         String input = "r\n\nA\n001\n" + randomUserIdStr + "\n123456\n123457\n123456\nl\ne\n";
 
 	    Scanner testScanner = new Scanner(input); 
@@ -43,22 +87,97 @@ public class MainTest {
 
         testScanner.close();
 	}
+	
+	
 	@Test
-	public void testAdminFunction() {
-	    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	    PrintStream originalOut = System.out;
+	public void testAdminFunction_m() {
+		String input = "l\ntestadmin\ntestadmin\n" + "m\ntestadmin\nBJv9gH\n241122 12-13\ny\n"+"l\ne\n";
 	    
-	    Scanner testScanner = new Scanner("a\nl\n23543\n001\n12345678\n123456\nj\nm\n9876\n002\n9\n1\n241001 15-25\n20241003 15-20\n241001 15-20\nN"
-		+ "\nv\na\np\nn\ns\n2024 13\n2024 1\nt\nq\nv\nr\n1234\n1\nq\nv\nr\n1234\n1\nq\nc\n001\n7\n6\nN\nc\n001\n7\n6\nY\nd\n2410011\n241011\nN"
-		+ "\nd\n2410011\n241011\nY\na\nq\nt\ntennis 40\na\nr\n9\n4\np\n4\na\n50\nN\np\nabc\n4\na\n40\n50\ny\nc\n12345\n001\n1\nN\nv\nu\n1345\n001\nq\n"
-		+ ""
-		
-		 
-		+ "");
+	    Scanner testScanner = new Scanner(input);
 	    Main.scanner = testScanner; 
 
 	    Main.main(new String[]{});
 	    Main.scanner.close();
+	}	
+	
+	@Test
+	public void testAdminFunction_v() {
+		String input = "l\ntestadmin\ntestadmin\n" + "v\nu\ntestadmin\nq\n"+"l\ne\n";
+	    
+	    Scanner testScanner = new Scanner(input);
+	    Main.scanner = testScanner; 
+
+	    Main.main(new String[]{});
+	    Main.scanner.close();
+	}	
+	
+	
+	@Test
+	public void testAdminFunction_c() {
+		String input = "l\ntestadmin\ntestadmin\n" + "c\ntestadmin\n6XhIYY\ny\n"+"l\ne\n";
+		
+		SportsCenter sportsCenter = SportsCenter.getInstance();
+		Booking booking = new Booking(testRoom, "testadmin", "240101", 11, 12, 50, "N", "6XhIYY");
+		testadmin.addBooking(booking);
+		testRoom.addBooking(booking);
+		sportsCenter.addBooking(booking);
+		
+
+
+		
+	    Scanner testScanner = new Scanner(input);
+	    Main.scanner = testScanner; 
+
+	    Main.main(new String[]{});
+	    Main.scanner.close();
+	}	
+	
+	@Test
+	public void testAdminFunction_d() {
+		String input = "l\ntestadmin\ntestadmin\n" + "d\n241121\ny\n"+"l\ne\n";
+		
+
+		
+	    Scanner testScanner = new Scanner(input);
+	    Main.scanner = testScanner; 
+
+	    Main.main(new String[]{});
+	    Main.scanner.close();
+	}	
+	
+	@Test
+	public void testAdminFunction_a() {
+		String input = "l\ntestadmin\ntestadmin\n" + "a\nr\nBJv9gH\n"+"l\ne\n";
+		
+
+		
+	    Scanner testScanner = new Scanner(input);
+	    Main.scanner = testScanner; 
+
+	    Main.main(new String[]{});
+	    Main.scanner.close();
+	}	
+	
+	
+	@Test
+	public void testAdminFunction_p() {
+		String input = "l\ntestadmin\ntestadmin\n" + "p\nBJv9gH\n100\n"+"l\ne\n";
+		
+
+		
+	    Scanner testScanner = new Scanner(input);
+	    Main.scanner = testScanner; 
+
+	    Main.main(new String[]{});
+	    Main.scanner.close();
+	}	
+	
+	@Test
+	public void testConstructor() throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		Class<?> cls = Main.class;
+	    Constructor<?> cons = cls.getDeclaredConstructor();
+	    cons.setAccessible(true);
+	    cons.newInstance(null);
 	}	
 
 	
