@@ -184,13 +184,6 @@ public class MainTest {
 	}	
 	
 	
-	@After
-	public void reset() throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchFieldException {
-
-		
-		Class<?> cls = SportsCenter.class;
-
-	}
 
 	
 }
