@@ -136,11 +136,13 @@ public class User {
 							isBookingSuccess = true;
 							break;
 
-						case "n":
+						default:
 							throw new ExBookingFailed(ExBookingFailed.FailReason.NOTPAID);
 						}
 
-					} else {
+					} 
+					
+					else {
 						System.out.println(
 								"Sorry, no room is not available at the time you want. Would you like to book another time or room? (Y/N):");
 
@@ -154,7 +156,7 @@ public class User {
 							makeBooking(scanner);
 							break;
 
-						case "n":
+						default:
 							throw new ExBookingFailed(ExBookingFailed.FailReason.NOTAVAIL);
 						}
 					}
