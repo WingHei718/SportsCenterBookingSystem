@@ -83,4 +83,11 @@ public class RoomTest {
         room.viewRoomBookingCalendar(scanner);
         scanner.close();
     }
+    
+    @Test
+    public void testGetRoomID() {
+        RoomType roomType = new RoomType("1", "badminton", 40);
+        Room room = new Room("1", roomType);
+        String roomString = room.getRoomID();
+    }
 }
