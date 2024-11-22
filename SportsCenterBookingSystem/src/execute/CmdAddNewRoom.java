@@ -40,7 +40,7 @@ public class CmdAddNewRoom implements Command{
             	
             	break;
             	
-            case "r":
+            default:
             	System.out.println("Please input the Room Type ID you would like to add room to:");
             	String roomTypeID = scanner.nextLine().trim();
             	roomType = sportsCenter.getRoomTypeByID(roomTypeID);
