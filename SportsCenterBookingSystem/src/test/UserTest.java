@@ -25,7 +25,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class UserTest {
+public class UserTest  extends TestCase{
 	@Before
 	public void init() {
 		SportsCenter sportsCenter = SportsCenter.getInstance();

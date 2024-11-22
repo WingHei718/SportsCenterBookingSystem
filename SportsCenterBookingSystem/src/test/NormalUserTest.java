@@ -23,7 +23,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.StringReader;
 
-public class NormalUserTest {
+public class NormalUserTest  extends TestCase{
 	
 	
 	@Test

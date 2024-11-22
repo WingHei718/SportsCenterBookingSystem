@@ -29,7 +29,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 
-public class ViewBookingServiceTest {
+public class ViewBookingServiceTest  extends TestCase{
 	@Before
 	public void init() {
 		SportsCenter sportsCenter = SportsCenter.getInstance();

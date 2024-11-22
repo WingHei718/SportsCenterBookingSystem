@@ -14,7 +14,7 @@ import java.util.Scanner;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class RoomTest {
+public class RoomTest extends TestCase{
 
     @Test
     public void testToString() {

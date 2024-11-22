@@ -18,7 +18,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 
 
-public class DateAndTimeTest {
+public class DateAndTimeTest  extends TestCase{
 
 
     @Test

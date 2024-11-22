@@ -29,7 +29,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.Assert.*;
 
-public class SportsCenterTest {
+public class SportsCenterTest  extends TestCase{
 	
 	private SportsCenter sportsCenter = SportsCenter.getInstance();
 	

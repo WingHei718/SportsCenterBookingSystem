@@ -33,15 +33,7 @@ import execute.UserSessionManager;
 
 public class MainTest extends TestCase{
 	
-	@BeforeClass
-	public static void setup(){
 
-	}
-	
-	@AfterClass
-	public static void reset() {
-		
-	}
 	
 	User testadmin;
 	RoomType testRoomType;
