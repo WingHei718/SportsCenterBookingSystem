@@ -27,87 +27,6 @@ public class TestCase{
 	
 	private static SportsCenter sportsCenter = SportsCenter.getInstance();
 
-	private static ArrayList<RoomType> allRoomTypes = new ArrayList<>();
-	private static ArrayList<Room> allRooms = new ArrayList<>();
-    private static ArrayList<User> allUsers = new ArrayList<>();
-    private static ArrayList<Booking> allBookings = new ArrayList<>();
-    private static ArrayList<String> allClosingDates = new ArrayList<>();
-	
-	/*
-
-    @BeforeClass
-	public static void setup() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
-
-		Field roomTypeField = SportsCenter.class.getDeclaredField("allRoomTypes");
-		Field roomField = SportsCenter.class.getDeclaredField("allRooms");
-		Field userField = SportsCenter.class.getDeclaredField("allUsers");
-		Field bookingField = SportsCenter.class.getDeclaredField("allBookings");
-		Field closingField = SportsCenter.class.getDeclaredField("allClosingDates");
-		
-		roomTypeField.setAccessible(true);
-		roomField.setAccessible(true);
-		userField.setAccessible(true);
-		bookingField.setAccessible(true);
-		closingField.setAccessible(true);
-
-		allRoomTypes=deepCopy((ArrayList<RoomType>) roomTypeField.get(sportsCenter));
-		allRooms= deepCopy((ArrayList<Room>) roomField.get(sportsCenter));
-		allUsers=deepCopy((ArrayList<User>) userField.get(sportsCenter));
-		allBookings=deepCopy((ArrayList<Booking>) bookingField.get(sportsCenter));
-		allClosingDates=deepCopy((ArrayList<String>) closingField.get(sportsCenter));
-
-
-
-	    
-	}
-
-
-    @AfterClass
-	public static void reset() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
-		Field roomTypeField = SportsCenter.class.getDeclaredField("allRoomTypes");
-		Field roomField = SportsCenter.class.getDeclaredField("allRooms");
-		Field userField = SportsCenter.class.getDeclaredField("allUsers");
-		Field bookingField = SportsCenter.class.getDeclaredField("allBookings");
-		Field closingField = SportsCenter.class.getDeclaredField("allClosingDates");
-		
-		roomTypeField.setAccessible(true);
-		roomField.setAccessible(true);
-		userField.setAccessible(true);
-		bookingField.setAccessible(true);
-		closingField.setAccessible(true);
-
-		roomTypeField.set(sportsCenter, allRoomTypes);
-		roomField.set(sportsCenter, allRooms);
-		userField.set(sportsCenter, allUsers);
-		bookingField.set(sportsCenter, allBookings);
-		closingField.set(sportsCenter, allClosingDates);
-
-		sportsCenter.saveData();
-	}
-    
-
-
-    private static <T> ArrayList<T> deepCopy(ArrayList<T> originalList) {
-        return originalList.stream()
-            .map(TestCase::deepCopyObject)
-            .collect(Collectors.toCollection(ArrayList::new));
-    }
-
-    private static <T> T deepCopyObject(T object) {
-        try {
-            // Assuming the object implements Cloneable and has a public clone method
-            if (object instanceof Cloneable) {
-                return (T) object.getClass().getMethod("clone").invoke(object);
-            }
-            // For custom objects, implement your deep copy logic here
-            throw new UnsupportedOperationException("Deep copy not implemented for class: " + object.getClass().getName());
-        } catch (Exception e) {
-            throw new RuntimeException("Deep copy failed for object: " + object, e);
-        }
-    }
-
-	*/
-
 
     @BeforeClass
 	public static void setup() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
@@ -186,7 +105,7 @@ public class TestCase{
 		bookingPath.setPath("src/execute/assets/booking_data.txt");
 		closingdatePath.setPath("src/execute/assets/closing_date_data.txt");
 
-	    
+	    sportsCenter.saveData();
 		
 	}
     

@@ -15,7 +15,7 @@ import java.util.Scanner;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class CmdViewBookingTest {
+public class CmdViewBookingTest  extends TestCase{
 
 	 @Test
 	    public void testExecute_viewAllBookings() {
