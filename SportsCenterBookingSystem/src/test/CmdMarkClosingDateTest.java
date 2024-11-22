@@ -18,15 +18,7 @@ import java.util.Scanner;
 
 public class CmdMarkClosingDateTest  extends TestCase{
 	
-	@BeforeClass
-	public static void setup(){
 
-	}
-	
-	@AfterClass
-	public static void reset() {
-		
-	}
 	
     @Test
     public void testExecuteMarkClosingDate() {

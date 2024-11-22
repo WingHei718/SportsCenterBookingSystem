@@ -11,15 +11,7 @@ import static org.junit.Assert.*;
 
 public class CmdRegisterAccountTest extends TestCase{
 	
-	@BeforeClass
-	public static void setup(){
 
-	}
-	
-	@AfterClass
-	public static void reset() {
-		
-	}
 	
 	
 	 @Test
