@@ -23,16 +23,7 @@ import java.util.Scanner;
 
 public class CmdMakeBookingTest extends TestCase{
 	
-	@BeforeClass
-	public static void setup(){
 
-	}
-	
-	@AfterClass
-	public static void reset() {
-		
-	}
-	
 
     @Test
     public void testExecuteMakeBooking_Success() {
