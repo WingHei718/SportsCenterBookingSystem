@@ -293,17 +293,18 @@ public class SportsCenter {
 			//TODO: need change the booking info string
 			System.out.println("The followings are all the booking affected by the closing date, please contact all the relevant users:");
 			for (Booking b: bookingForDay) {
-				if (!b.getIsCancelled()) {
+				
 					System.out.println(b);
 					b.cancelBookingByClosingDate();
-				}
+				
+				
 			}
 		}
 		
 	}
 	
 	public void saveData() {
-		String roomTypePath = "src/execute/assets/room_type_data.txt";
+		String roomTypePath = FilePath.ROOMTYPE.getPath();
 	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(roomTypePath))) {
 	        for (RoomType r: allRoomTypes) {
 	            writer.write(r.toString());
@@ -313,7 +314,7 @@ public class SportsCenter {
 	        e.printStackTrace();
 	    }
 	    
-	    String roomPath = "src/execute/assets/room_data.txt";
+	    String roomPath = FilePath.ROOM.getPath();
 	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(roomPath))) {
 	        for (Room r: allRooms) {
 	            writer.write(r.toString());
@@ -323,7 +324,7 @@ public class SportsCenter {
 	        e.printStackTrace();
 	    }
 		
-		String userPath = "src/execute/assets/user_data.txt";
+		String userPath = FilePath.USER.getPath();
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(userPath))) {
             for (User u: allUsers) {
                 writer.write(u.toString());
@@ -333,7 +334,7 @@ public class SportsCenter {
             e.printStackTrace();
         }
 		
-	    String bookingPath = "src/execute/assets/booking_data.txt";
+	    String bookingPath = FilePath.BOOKING.getPath();
 	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(bookingPath))) {
 	        for (Booking b: allBookings) {
 	            writer.write(b.toString());
@@ -343,7 +344,7 @@ public class SportsCenter {
 	        e.printStackTrace();
 	    }
 	    
-	    String closingDatePath = "src/execute/assets/closing_date_data.txt";
+	    String closingDatePath = FilePath.CLOSINGDATE.getPath();
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(closingDatePath))) {
 			for (String d: allClosingDates) {
 				writer.write(d);
@@ -370,9 +371,10 @@ public class SportsCenter {
 		for (Booking b: bookingForDay) {
 			Room room = b.getRoom();
 			if(room.getRoomType().getType().equals(roomType.getType())) {
-				if (bookingOfRoomsForDay.containsKey(room.getRoomID())) {
-					bookingOfRoomsForDay.get(room.getRoomID()).add(b);
-				}
+
+				bookingOfRoomsForDay.getOrDefault(room.getRoomID(), new ArrayList<Booking>()).add(b);
+				
+				
 			};
 			
 		}

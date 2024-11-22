@@ -12,14 +12,33 @@ import java.io.PrintStream;
 
 
 public class CommonTest {
+	
+    @Test
+    public void testConstructor() throws IllegalAccessException, InstantiationException {
+        final Class<?> cls = Common.class;
+        final Constructor<?> c = cls.getDeclaredConstructors()[0];
+        c.setAccessible(true);
+
+        Throwable targetException = null;
+        try {
+            c.newInstance((Object[])null);
+        } catch (InvocationTargetException ite) {
+            targetException = ite.getTargetException();
+        }
+
+        assertNotNull(targetException);
+        assertEquals(targetException.getClass(), InstantiationException.class);
+    }
+	
+	
 	@Test
 	public void testGetValidInput() {
-		Common commonforclass = new Common();
+
 		String[] validCommands = { "start", "stop", "pause" };
 		Common.InputType type = Common.InputType.COMMAND;
 		String inputString = "start\n";
 		Scanner scanner = new Scanner(inputString);
-		String result = commonforclass.getValidInput(scanner, validCommands, type); // 調用common.java默認constructor
+		String result = Common.getValidInput(scanner, validCommands, type); // 調用common.java默認constructor
 		assertEquals("The valid input should be returned", "start", result);
 
 		scanner.close();

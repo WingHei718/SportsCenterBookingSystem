@@ -10,12 +10,16 @@ import execute.Room;
 import execute.RoomType;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.PrintStream;
 import java.io.StringReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URLDecoder;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -115,21 +119,24 @@ public class SportsCenterTest {
        sportsCenter.addRoomType(roomType);
        Room room = new Room("101", roomType);
        sportsCenter.addRoom(room);
-       sportsCenter.addUser(new User("001", "A", "123456"));
+
        
        String closingDate = "231212";
-       String closingDate1 = "231213";
-       sportsCenter.addClosingDate(closingDate);
+
         User user = new User( "001", "A", "123456");
         sportsCenter.addUser(user);
         
         Booking booking1 = new Booking(room, "001", closingDate, 11, 12, 100, "N", "1");
         sportsCenter.addBooking(booking1);
+
         
         Booking booking2 = new Booking(room, "001", closingDate, 13, 14, 100, "Y", "1");
-        booking2.cancelBookingByClosingDate();
         sportsCenter.addBooking(booking2);
-       // do not why ??
+        
+        Booking booking3 = new Booking(room, "001", closingDate, 13, 14, 100, "1", "1");
+        sportsCenter.addBooking(booking3);
+
+
         sportsCenter.addClosingDate(closingDate);
        
     }
@@ -238,12 +245,19 @@ public class SportsCenterTest {
     }
 
     @Test
-    public void testPrintAllClosingDate_WhenEmpty() {
-    	SportsCenter sportsCenter = SportsCenter.getInstance();
+    public void testPrintAllClosingDate_WhenEmpty() throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchFieldException {
+		SportsCenter sportsCenter = SportsCenter.getInstance();
+		
+	    Field field = SportsCenter.class.getDeclaredField("allClosingDates");
+	    field.setAccessible(true); // Make private field accessible
+
+	    // Modify the private field
+	    field.set(sportsCenter, new ArrayList<>());
+	    
         sportsCenter.printAllClosingDate();
     }
-    
-    
+  
+   
     @Test
     public void testNoRoomType() throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchFieldException {
 
@@ -432,7 +446,7 @@ public class SportsCenterTest {
     	setOutput();
 		
 		FilePath filepath = FilePath.ROOM;
-		filepath.setPath("src/execute/assets/room_data_for_test_case");
+		filepath.setPath("src/execute/assets/test_cases_file/room_data_for_test_case");
 		
 		SportsCenter sportsCenter = SportsCenter.getInstance();
 		
@@ -458,7 +472,7 @@ public class SportsCenterTest {
     	
 		
 		FilePath filepath = FilePath.BOOKING;
-		filepath.setPath("src/execute/assets/booking_data_for_test_case");
+		filepath.setPath("src/execute/assets/test_cases_file/booking_data_for_test_case");
 		
 		
 		SportsCenter sportsCenter = SportsCenter.getInstance();
@@ -488,7 +502,7 @@ public class SportsCenterTest {
     	
 		
 		FilePath filepath = FilePath.BOOKING;
-		filepath.setPath("src/execute/assets/booking_data_for_test_case_2");
+		filepath.setPath("src/execute/assets/test_cases_file/booking_data_for_test_case_2");
 		
 		
 		SportsCenter sportsCenter = SportsCenter.getInstance();
@@ -512,10 +526,140 @@ public class SportsCenterTest {
 
     }
     
+    @Test
+    public void testSaveData() throws Exception {
 
+		
+		FilePath roomTypePath = FilePath.ROOMTYPE;
+		roomTypePath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+		
+		FilePath roomPath = FilePath.ROOM;
+		roomPath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+		
+		FilePath userPath = FilePath.USER;
+		userPath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+		
+		FilePath bookingPath = FilePath.BOOKING;
+		bookingPath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+		
+		FilePath closingdatePath = FilePath.CLOSINGDATE;
+		closingdatePath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+		
+		SportsCenter sportsCenter = SportsCenter.getInstance();
+		sportsCenter.saveData();
+		
+		
+		
+		
+		roomTypePath.setPath("src/execute/assets/room_type_data.txt");
+		roomPath.setPath("src/execute/assets/room_data.txt");
+		userPath.setPath("src/execute/assets/user_data.txt");
+		bookingPath.setPath("src/execute/assets/booking_data.txt");
+		closingdatePath.setPath("src/execute/assets/closing_date_data.txt");
+		
+
+	
+    }
+    
+    @Test
+    public void testSaveDataError() throws Exception {
+    	String readOnlyPath = "src/execute/assets/test_cases_file/readOnly";
+    	
+        String decodedPath = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8");
+        if (decodedPath.startsWith("/") ) {
+            decodedPath = decodedPath.substring(1);
+        }
+        Path basePath = Paths.get(decodedPath).getParent();
+
+
+        String path = basePath.resolve(readOnlyPath).toString();
+    	
+    	
+    	File file = new File(path);
+         
+
+    	file.createNewFile();
+
+
+    	file.setReadOnly();
+
+		FilePath roomTypePath = FilePath.ROOMTYPE;
+		roomTypePath.setPath(path);
+		
+		FilePath roomPath = FilePath.ROOM;
+		roomPath.setPath(path);
+		
+		FilePath userPath = FilePath.USER;
+		userPath.setPath(path);
+		
+		FilePath bookingPath = FilePath.BOOKING;
+		bookingPath.setPath(path);
+		
+		FilePath closingdatePath = FilePath.CLOSINGDATE;
+		closingdatePath.setPath(path);
+		
+		SportsCenter sportsCenter = SportsCenter.getInstance();
+		
+		sportsCenter.saveData();
+		
+		
+		
+		
+		roomTypePath.setPath("src/execute/assets/room_type_data.txt");
+		roomPath.setPath("src/execute/assets/room_data.txt");
+		userPath.setPath("src/execute/assets/user_data.txt");
+		bookingPath.setPath("src/execute/assets/booking_data.txt");
+		closingdatePath.setPath("src/execute/assets/closing_date_data.txt");
+		
+
+	
+    }
     
     
+    @Test
+    public void testCheckAvailability_2() {
+    	SportsCenter sportsCenter = SportsCenter.getInstance();
+        RoomType roomType1 = new RoomType("999999", "Testing", 800);
+        RoomType roomType2 = new RoomType("888888", "Testing2", 800);
+        sportsCenter.addRoomType(roomType1);
+        sportsCenter.addRoomType(roomType2);
+
+        Room room1 = new Room("123456", roomType1);
+        Room room2 = new Room("123457", roomType1);
+        sportsCenter.addRoom(room1);
+        sportsCenter.addRoom(room2);
+
+        Booking booking1 = new Booking(room1, "001", "231201", 10, 12, 100, "N", "001");
+        Booking booking2 = new Booking(room2, "001", "231201", 14, 16, 100, "N", "002");
+        sportsCenter.addBooking(booking1);
+        sportsCenter.addBooking(booking2);
+
+        Room availableRoom = sportsCenter.checkAvailability(roomType2, "231201", 13, 15);
+
+    }
     
+    @Test
+    public void testCheckAvailability_3() {
+    	SportsCenter sportsCenter = SportsCenter.getInstance();
+        RoomType roomType1 = new RoomType("999999", "Testing", 800);
+
+        sportsCenter.addRoomType(roomType1);
+
+        Room room1 = new Room("123456", roomType1);
+        Room room2 = new Room("123457", roomType1);
+
+        sportsCenter.addRoom(room1);
+        sportsCenter.addRoom(room2);
+
+
+        Booking booking1 = new Booking(room1, "001", "231201", 10, 12, 100, "N", "001");
+        Booking booking2 = new Booking(room2, "001", "231201", 14, 16, 100, "N", "002");
+        sportsCenter.addBooking(booking1);
+        sportsCenter.addBooking(booking2);
+
+        Room availableRoom = sportsCenter.checkAvailability(roomType1, "231201", 12, 14);
+
+    }
 
     
     
