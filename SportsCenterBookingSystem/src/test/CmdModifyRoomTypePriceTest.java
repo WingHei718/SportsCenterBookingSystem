@@ -3,6 +3,8 @@ package test;
 import static org.junit.Assert.assertEquals;
 
 import java.io.StringReader;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.junit.Test;
@@ -49,6 +51,27 @@ public class CmdModifyRoomTypePriceTest {
 		     Scanner scanner = new Scanner(inputString);
 		     command.execute(scanner);
 		     scanner.close();
+	    }
+	    
+	    @Test
+	    public void testExecute_noRoomtype() throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
+	    	 CmdModifyRoomTypePrice command = new CmdModifyRoomTypePrice();
+		     String inputString = "1\n40\n";
+		     Scanner scanner = new Scanner(inputString);
+				SportsCenter sportsCenter = SportsCenter.getInstance();
+				
+			    Field field = SportsCenter.class.getDeclaredField("allRoomTypes");
+			    field.setAccessible(true); 
+
+
+			    field.set(sportsCenter, new ArrayList<>());
+		        
+
+		        
+		     command.execute(scanner);
+		     scanner.close();
+		     
+		     sportsCenter.init();
 	    }
 
 
