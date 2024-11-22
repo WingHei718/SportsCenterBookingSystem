@@ -40,7 +40,7 @@ public class CmdRegisterAccountTest {
 	    @Test
 	    public void testExecute_PasswordsDoNotMatch() {
 	    	CmdRegisterAccount command = new CmdRegisterAccount();
-	        String inputString = "a\n001\n006\n12345\n123456\n123456\n";
+	        String inputString = "a\n001\n006\n123456\n12345\n123456\n";
 	        Scanner scanner = new Scanner(inputString);
 	        command.execute(scanner);
 	        scanner.close();
