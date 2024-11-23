@@ -1,24 +1,14 @@
 package test;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
 import java.lang.reflect.Field;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
+
 
 import org.junit.*;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
 
-import execute.Booking;
-import execute.Room;
-import execute.RoomType;
 import execute.SportsCenter;
-import execute.User;
+
 import execute.SportsCenter.FilePath;
 
 

@@ -1,30 +1,19 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 import java.util.Scanner;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
+
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import execute.Admin;
+
 import execute.Booking;
-import execute.CmdAddNewRoom;
 import execute.Main;
-import execute.NormalUser;
 import execute.Room;
 import execute.RoomType;
 import execute.SportsCenter;

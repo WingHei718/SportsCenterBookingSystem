@@ -1,21 +1,15 @@
 package test;
 
-import execute.Common;
+
 import execute.DateAndTime;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.time.LocalDate;
 
 
 public class DateAndTimeTest  extends TestCase{

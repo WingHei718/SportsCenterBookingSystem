@@ -2,7 +2,6 @@ package test;
 
 import execute.Room;
 import execute.RoomType;
-import execute.User;
 import execute.Booking;
 
 import java.io.StringReader;

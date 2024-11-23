@@ -3,30 +3,18 @@ package test;
 
 import execute.ViewBookingService;
 import execute.Booking;
-import execute.Common;
 import execute.Room;
 import execute.RoomType;
 import execute.SportsCenter;
 import execute.User;
-import execute.UserRole;
-import execute.UserSessionManager;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.StringReader;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.TreeMap;
-import java.util.TreeSet;
+
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 
 public class ViewBookingServiceTest  extends TestCase{

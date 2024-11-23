@@ -2,26 +2,18 @@ package test;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
+
 import org.junit.Test;
 
-import execute.Booking;
-import execute.CmdCancelBooking;
-import execute.CmdViewBooking;
-import execute.Main;
+
 import execute.NormalUser;
-import execute.Room;
-import execute.RoomType;
-import execute.SportsCenter;
 import execute.User;
 import execute.UserSessionManager;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.StringReader;
+
 
 public class NormalUserTest  extends TestCase{
 	
@@ -107,6 +99,7 @@ public class NormalUserTest  extends TestCase{
         NormalUser normalUser = new NormalUser();
         UserSessionManager.getInstance().setCurrentUser(user);
         normalUser.cancelBooking(new Scanner(System.in));
+		scanner.close();
     }
 
 @Test

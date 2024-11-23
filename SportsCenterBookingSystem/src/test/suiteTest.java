@@ -1,18 +1,8 @@
 package test;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-
-import execute.Booking;
-import execute.Room;
-import execute.RoomType;
-import execute.SportsCenter;
-import execute.User;
 
 
 

@@ -1,22 +1,18 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
 
-import java.io.StringReader;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+
 import org.junit.Test;
 
-import execute.CmdMarkClosingDate;
+
 import execute.CmdModifyRoomTypePrice;
-import execute.Main;
-import execute.RoomType;
+
 import execute.SportsCenter;
-import execute.User;
+
 
 public class CmdModifyRoomTypePriceTest extends TestCase{
 	

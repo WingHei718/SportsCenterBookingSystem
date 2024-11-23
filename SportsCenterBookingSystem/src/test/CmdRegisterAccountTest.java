@@ -4,10 +4,9 @@ package test;
 import execute.CmdRegisterAccount;
 import java.util.Scanner;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
+
 
 public class CmdRegisterAccountTest extends TestCase{
 	

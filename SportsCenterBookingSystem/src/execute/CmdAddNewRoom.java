@@ -23,7 +23,7 @@ public class CmdAddNewRoom implements Command{
     	
 		switch(action) {
             case "t":
-            	//TODO: may need state only one word name is allowed?
+
             	System.out.println("Please input the new Room Type Name and its Price (format: badminton 40):");
             	String roomTypeNameAndPrice = Common.getValidRoomTypeAndPrice(scanner);
             	String[] splittedRoomTypeNameAndPrice = roomTypeNameAndPrice.split(" ");

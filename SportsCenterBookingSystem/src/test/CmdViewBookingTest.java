@@ -1,19 +1,12 @@
 package test;
 
-import execute.SportsCenter;
+
 import execute.User;
 import execute.UserSessionManager;
-import execute.Booking;
-import execute.Room;
-import execute.RoomType;
 import execute.CmdViewBooking;
-import execute.Main;
-
-import java.io.StringReader;
 import java.util.Scanner;
-
 import org.junit.Test;
-import static org.junit.Assert.*;
+
 
 public class CmdViewBookingTest  extends TestCase{
 
