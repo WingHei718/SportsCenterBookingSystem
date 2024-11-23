@@ -1,7 +1,6 @@
 package test;
 
 import execute.Booking;
-import execute.Common;
 import execute.Room;
 import execute.RoomType;
 
@@ -11,7 +10,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.junit.Assert;

@@ -75,7 +75,7 @@ public class CmdModifyRoomTypePriceTest extends TestCase{
 		     command.execute(scanner);
 		     scanner.close();
 		     
-		     //sportsCenter.init();
+		     sportsCenter.init();
 	    }
 
 

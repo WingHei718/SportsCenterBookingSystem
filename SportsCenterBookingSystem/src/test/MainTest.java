@@ -67,7 +67,7 @@ public class MainTest extends TestCase{
 		}
 		
 	}
-	/*
+	
 	
 	@Test
 	public void testRegist() {
@@ -151,7 +151,7 @@ public class MainTest extends TestCase{
 	    Main.main(new String[]{});
 	    Main.scanner.close();
 	}	
-	*/
+	
 	@Test
 	public void testAdminFunction_a() {
 		String input = "l\ntestadmin\ntestadmin\n" + "a\nr\nBJv9gH\n"+"l\ne\n";
@@ -165,7 +165,7 @@ public class MainTest extends TestCase{
 	    Main.scanner.close();
 	}	
 	
-	/*
+	
 	@Test
 	public void testAdminFunction_p() {
 		String input = "l\ntestadmin\ntestadmin\n" + "p\nBJv9gH\n100\n"+"l\ne\n";
@@ -187,7 +187,7 @@ public class MainTest extends TestCase{
 	    cons.newInstance(null);
 	}	
 	
-	*/
+	
 
 	
 }

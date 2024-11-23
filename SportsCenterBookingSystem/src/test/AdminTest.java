@@ -4,23 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 
 import execute.Admin;
-import execute.Booking;
-import execute.Room;
-import execute.RoomType;
-import execute.SportsCenter;
-import execute.User;
-import execute.ViewBookingService;
+
 
 public class AdminTest extends TestCase{
 	

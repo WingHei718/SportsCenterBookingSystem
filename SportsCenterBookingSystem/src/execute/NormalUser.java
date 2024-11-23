@@ -1,6 +1,5 @@
 package execute;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NormalUser implements UserRole {

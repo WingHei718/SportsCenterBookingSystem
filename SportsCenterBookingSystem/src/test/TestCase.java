@@ -26,39 +26,21 @@ public class TestCase{
     // 测试套件类内容
 	
 	private static SportsCenter sportsCenter = SportsCenter.getInstance();
+	private static FilePath roomTypePath = FilePath.ROOMTYPE;
+	private static FilePath roomPath = FilePath.ROOM;
+	private static FilePath userPath = FilePath.USER;
+	private static FilePath bookingPath = FilePath.BOOKING;
+	private static FilePath closingdatePath = FilePath.CLOSINGDATE;
 
 
     @BeforeClass
 	public static void setup() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
-		
-		FilePath roomTypePath = FilePath.ROOMTYPE;
-		roomTypePath.setPath("src/execute/assets/test_cases_file/roomType_backup");
-		
-		FilePath roomPath = FilePath.ROOM;
-		roomPath.setPath("src/execute/assets/test_cases_file/room_backup");
-		
-		FilePath userPath = FilePath.USER;
-		userPath.setPath("src/execute/assets/test_cases_file/user_backup");
-		
-		FilePath bookingPath = FilePath.BOOKING;
-		bookingPath.setPath("src/execute/assets/test_cases_file/booking_backup");
-		
-		FilePath closingdatePath = FilePath.CLOSINGDATE;
-		closingdatePath.setPath("src/execute/assets/test_cases_file/closing_backup");
-		
+
+    	setPathToBackup();
 
 		sportsCenter.saveData();
 		
-		
-		
-		
-		roomTypePath.setPath("src/execute/assets/room_type_data.txt");
-		roomPath.setPath("src/execute/assets/room_data.txt");
-		userPath.setPath("src/execute/assets/user_data.txt");
-		bookingPath.setPath("src/execute/assets/booking_data.txt");
-		closingdatePath.setPath("src/execute/assets/closing_date_data.txt");
-
-	    System.out.println("000000");
+		restorePath();
 	}
 
 
@@ -82,32 +64,31 @@ public class TestCase{
 		bookingField.set(sportsCenter, new ArrayList<>());
 		closingField.set(sportsCenter, new ArrayList<>());
 		
-		FilePath roomTypePath = FilePath.ROOMTYPE;
-		roomTypePath.setPath("src/execute/assets/test_cases_file/roomType_backup");
-		
-		FilePath roomPath = FilePath.ROOM;
-		roomPath.setPath("src/execute/assets/test_cases_file/room_backup");
-		
-		FilePath userPath = FilePath.USER;
-		userPath.setPath("src/execute/assets/test_cases_file/user_backup");
-		
-		FilePath bookingPath = FilePath.BOOKING;
-		bookingPath.setPath("src/execute/assets/test_cases_file/booking_backup");
-		
-		FilePath closingdatePath = FilePath.CLOSINGDATE;
-		closingdatePath.setPath("src/execute/assets/test_cases_file/closing_backup");
+		setPathToBackup();
 		
 		sportsCenter.init();
 		
+		restorePath();
+
+	    sportsCenter.saveData();
+		
+	}
+    
+    private static void setPathToBackup() {
+		roomTypePath.setPath("src/execute/assets/test_cases_file/roomType_backup");
+		roomPath.setPath("src/execute/assets/test_cases_file/room_backup");
+		userPath.setPath("src/execute/assets/test_cases_file/user_backup");		
+		bookingPath.setPath("src/execute/assets/test_cases_file/booking_backup");		
+		closingdatePath.setPath("src/execute/assets/test_cases_file/closing_backup");
+    }
+    
+    private static void restorePath() {
 		roomTypePath.setPath("src/execute/assets/room_type_data.txt");
 		roomPath.setPath("src/execute/assets/room_data.txt");
 		userPath.setPath("src/execute/assets/user_data.txt");
 		bookingPath.setPath("src/execute/assets/booking_data.txt");
 		closingdatePath.setPath("src/execute/assets/closing_date_data.txt");
-
-	    sportsCenter.saveData();
-		
-	}
+    }
     
 
 }

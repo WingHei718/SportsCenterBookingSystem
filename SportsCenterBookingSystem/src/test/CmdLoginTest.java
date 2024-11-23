@@ -1,17 +1,10 @@
 package test;
 
-import execute.CmdAddNewRoom;
 import execute.CmdLogin;
-import execute.Main;
-import execute.SportsCenter;
-import execute.User;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.PrintStream;
 import java.util.Scanner;
 
 public class CmdLoginTest  extends TestCase{

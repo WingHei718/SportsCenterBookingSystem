@@ -1,5 +1,5 @@
 package execute;
-import java.text.SimpleDateFormat;
+
 import java.time.*;
 import java.time.format.*;
 import java.util.*;
@@ -265,9 +265,6 @@ public class ViewBookingService {
 		
 		int weekofFirst = calendar.get(Calendar.DAY_OF_WEEK);
 		int firstNum= 1-weekofFirst+1;
-		int lastNum = 7*numofWeek+firstNum-1;
-		//System.out.println(lastNum+" "+ numofWeek);
-		int daycount=1;
 		
 		TreeMap <Integer, TreeSet<Booking>> dayMap = new TreeMap<>();
 		TreeMap <Integer, Integer> weekDepth = new TreeMap<>();

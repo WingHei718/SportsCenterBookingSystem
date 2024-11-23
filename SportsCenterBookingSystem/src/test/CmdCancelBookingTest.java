@@ -1,22 +1,11 @@
 package test;
 
 import execute.CmdCancelBooking;
-import execute.Main;
-import execute.SportsCenter;
 import execute.User;
 import execute.UserSessionManager;
-import execute.Room;
-import execute.RoomType;
-import execute.Booking;
-import execute.CmdAddNewRoom;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
 import java.util.Scanner;
 
 public class CmdCancelBookingTest  extends TestCase{

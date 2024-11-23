@@ -9,10 +9,10 @@ public interface UserRole {
         switch(userRole){
             case "A","a":
                 return new Admin();
-            case "N","n":
+            default:
                 return new NormalUser();
         }
-        return null;
+
     }
 	
 	public String showActionMenu(Scanner scanner);
