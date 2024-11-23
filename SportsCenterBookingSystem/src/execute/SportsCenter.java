@@ -310,8 +310,8 @@ public class SportsCenter {
 	            writer.write(r.toString());
 	            writer.newLine();
 	        }
-	    } catch (IOException e) {
-	        e.printStackTrace();
+	    } catch (Exception e) {
+	        System.out.println("Cannot write in file: "+roomTypePath);
 	    }
 	    
 	    String roomPath = FilePath.ROOM.getPath();
@@ -320,8 +320,8 @@ public class SportsCenter {
 	            writer.write(r.toString());
 	            writer.newLine();
 	        }
-	    } catch (IOException e) {
-	        e.printStackTrace();
+	    } catch (Exception e) {
+	        System.out.println("Cannot write in file: "+roomPath);
 	    }
 		
 		String userPath = FilePath.USER.getPath();
@@ -330,8 +330,8 @@ public class SportsCenter {
                 writer.write(u.toString());
                 writer.newLine();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Cannot write in file: "+userPath);
         }
 		
 	    String bookingPath = FilePath.BOOKING.getPath();
@@ -340,8 +340,8 @@ public class SportsCenter {
 	            writer.write(b.toString());
 	            writer.newLine();
 	        }
-	    } catch (IOException e) {
-	        e.printStackTrace();
+	    } catch (Exception e) {
+	        System.out.println("Cannot write in file: "+bookingPath);
 	    }
 	    
 	    String closingDatePath = FilePath.CLOSINGDATE.getPath();
@@ -350,9 +350,10 @@ public class SportsCenter {
 				writer.write(d);
 				writer.newLine();
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("Cannot write in file: "+closingDatePath);
 		}
+
 	    
 	}
 

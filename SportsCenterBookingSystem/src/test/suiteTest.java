@@ -18,27 +18,27 @@ import execute.User;
 
 @RunWith(Suite.class)
 @SuiteClasses({
+	
 	AdminTest.class,
 	BookingTest.class,
-//	CmdAddNewRoomTest.class,
-//	CmdCancelBookingTest.class,
-//	CmdLoginTest.class,
+	CmdAddNewRoomTest.class,
+	CmdCancelBookingTest.class,
+	CmdLoginTest.class,
 	CmdLogoutTest.class,
-//	CmdMakeBookingTest.class,
-//	CmdMarkClosingDateTest.class,
-//	CmdModifyRoomTypePriceTest.class,
-//	CmdRegisterAccountTest.class,
-	
-//	CmdViewBookingTest.class,
-//	CommonTest.class,
-//	DateAndTimeTest.class,	
-//	MainTest.class,
-//	NormalUserTest.class,
-//	RoomTest.class,
-//	RoomTypeTest.class,
-//	SportsCenterTest.class,
-//	UserTest.class,
-//	ViewBookingServiceTest.class
+	CmdMakeBookingTest.class,
+	CmdMarkClosingDateTest.class,
+	CmdModifyRoomTypePriceTest.class,
+	CmdRegisterAccountTest.class,
+	CmdViewBookingTest.class,
+	CommonTest.class,
+	DateAndTimeTest.class,	
+	MainTest.class,
+	NormalUserTest.class,
+	RoomTest.class,
+	RoomTypeTest.class,
+	SportsCenterTest.class,
+	UserTest.class,
+	ViewBookingServiceTest.class
     
 })
 public class suiteTest {

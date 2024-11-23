@@ -11,6 +11,7 @@ import execute.RoomType;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.io.StringReader;
 import java.lang.reflect.Constructor;
@@ -30,36 +31,36 @@ import org.junit.jupiter.api.BeforeEach;
 import static org.junit.Assert.*;
 
 public class SportsCenterTest  extends TestCase{
-	
-	private SportsCenter sportsCenter = SportsCenter.getInstance();
-	
-	PrintStream oldPrintStream;
-	ByteArrayOutputStream bos;
+    
+    private SportsCenter sportsCenter = SportsCenter.getInstance();
+    
+    PrintStream oldPrintStream;
+    ByteArrayOutputStream bos;
 
 
-	private void setOutput() throws Exception {
-		oldPrintStream = System.out;
-		bos = new ByteArrayOutputStream();
-		System.setOut(new PrintStream(bos));
-	}
+    private void setOutput() throws Exception {
+        oldPrintStream = System.out;
+        bos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bos));
+    }
 
-	private String getOutput() { // throws Exception
-		System.setOut(oldPrintStream);
-		return bos.toString();
-	}
+    private String getOutput() { // throws Exception
+        System.setOut(oldPrintStream);
+        return bos.toString();
+    }
     
     
 
-	
-	
-	
-	
-	
-	 @Test
-	    public void testGetInstance_InitCalled() {
-	        SportsCenter sportsCenter = SportsCenter.getInstance();
-	        ArrayList<Booking> bookings = sportsCenter.getAllBookings();
-	    }
+    
+    
+    
+    
+    
+     @Test
+        public void testGetInstance_InitCalled() {
+            SportsCenter sportsCenter = SportsCenter.getInstance();
+            ArrayList<Booking> bookings = sportsCenter.getAllBookings();
+        }
     
     @Test
     public void testSportsCenterOperations() {
@@ -114,8 +115,8 @@ public class SportsCenterTest  extends TestCase{
     
    @Test
     public void testAddClosingDate() {
-	   SportsCenter sportsCenter = SportsCenter.getInstance();
-	   RoomType roomType = new RoomType("001", "Badminton", 800);
+       SportsCenter sportsCenter = SportsCenter.getInstance();
+       RoomType roomType = new RoomType("001", "Badminton", 800);
        sportsCenter.addRoomType(roomType);
        Room room = new Room("101", roomType);
        sportsCenter.addRoom(room);
@@ -144,7 +145,7 @@ public class SportsCenterTest  extends TestCase{
     
     @Test
     public void testCheckAvailability() {
-    	SportsCenter sportsCenter = SportsCenter.getInstance();
+        SportsCenter sportsCenter = SportsCenter.getInstance();
         RoomType roomType = new RoomType("001", "Badminton", 800);
         sportsCenter.addRoomType(roomType);
 
@@ -164,7 +165,7 @@ public class SportsCenterTest  extends TestCase{
 
     @Test
     public void testIsOverlapping() {
-    	SportsCenter sportsCenter = SportsCenter.getInstance();
+        SportsCenter sportsCenter = SportsCenter.getInstance();
         ArrayList<Booking> bookings = new ArrayList<>();
         Booking booking1 = new Booking(null, "001", "231201", 10, 12, 100, "N", "001");
         Booking booking2 = new Booking(null, "001", "231201", 12, 14, 100, "N", "002");
@@ -178,7 +179,7 @@ public class SportsCenterTest  extends TestCase{
 
     @Test
     public void testCalculateIdleTime() {
-    	SportsCenter sportsCenter = SportsCenter.getInstance();
+        SportsCenter sportsCenter = SportsCenter.getInstance();
         ArrayList<Booking> bookings = new ArrayList<>();
         Booking booking1 = new Booking(null, "001", "231201", 10, 12, 100, "N", "001");
         Booking booking2 = new Booking(null, "001", "231201", 14, 16, 100, "N", "002");
@@ -199,7 +200,7 @@ public class SportsCenterTest  extends TestCase{
     @Test
     public void testPrintAllRoomType_MultipleRoomTypes() {
         SportsCenter sportsCenter = SportsCenter.getInstance();
-        sportsCenter.init(); 
+        //sportsCenter.init(); 
         RoomType roomType1 = new RoomType("001", "Badminton", 800);
         RoomType roomType2 = new RoomType("002", "Tennis", 1000);
         sportsCenter.addRoomType(roomType1);
@@ -222,7 +223,7 @@ public class SportsCenterTest  extends TestCase{
    
     @Test
     public void testPrintAllRoomType_WhenNotEmpty() {
-    	SportsCenter sportsCenter = SportsCenter.getInstance();
+        SportsCenter sportsCenter = SportsCenter.getInstance();
         RoomType roomType1 = new RoomType("001", "Badminton", 800);
         RoomType roomType2 = new RoomType("002", "Tennis", 1000);
         sportsCenter.addRoomType(roomType1);
@@ -232,13 +233,13 @@ public class SportsCenterTest  extends TestCase{
 
     @Test
     public void testPrintAllRoomType_WhenEmpty() {
-    	SportsCenter sportsCenter = SportsCenter.getInstance();
+        SportsCenter sportsCenter = SportsCenter.getInstance();
         sportsCenter.printAllRoomType();
     }
 
     @Test
     public void testPrintAllClosingDate_WhenNotEmpty() {
-    	SportsCenter sportsCenter = SportsCenter.getInstance();
+        SportsCenter sportsCenter = SportsCenter.getInstance();
         sportsCenter.addClosingDate("231212");
         sportsCenter.addClosingDate("231213");
         sportsCenter.printAllClosingDate();
@@ -246,14 +247,14 @@ public class SportsCenterTest  extends TestCase{
 
     @Test
     public void testPrintAllClosingDate_WhenEmpty() throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchFieldException {
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		
-	    Field field = SportsCenter.class.getDeclaredField("allClosingDates");
-	    field.setAccessible(true); // Make private field accessible
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+        
+        Field field = SportsCenter.class.getDeclaredField("allClosingDates");
+        field.setAccessible(true); // Make private field accessible
 
-	    // Modify the private field
-	    field.set(sportsCenter, new ArrayList<>());
-	    
+        // Modify the private field
+        field.set(sportsCenter, new ArrayList<>());
+        
         sportsCenter.printAllClosingDate();
     }
   
@@ -261,20 +262,20 @@ public class SportsCenterTest  extends TestCase{
     @Test
     public void testNoRoomType() throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchFieldException {
 
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		
-		Class<?> cls = SportsCenter.class;
-	    Constructor<?> cons = cls.getDeclaredConstructor();
-	    cons.setAccessible(true);
-	    SportsCenter emptyInstance = (SportsCenter) cons.newInstance();
-	    
-	    // Access private field using reflection
-	    Field field = SportsCenter.class.getDeclaredField("INSTANCE");
-	    field.setAccessible(true); // Make private field accessible
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+        
+        Class<?> cls = SportsCenter.class;
+        Constructor<?> cons = cls.getDeclaredConstructor();
+        cons.setAccessible(true);
+        SportsCenter emptyInstance = (SportsCenter) cons.newInstance();
+        
+        // Access private field using reflection
+        Field field = SportsCenter.class.getDeclaredField("INSTANCE");
+        field.setAccessible(true); // Make private field accessible
 
-	    // Modify the private field
-	    field.set(sportsCenter, emptyInstance);
-	    
+        // Modify the private field
+        field.set(sportsCenter, emptyInstance);
+        
 
         String input = "B\n900\nN";
         StringReader stringReader = new StringReader(input);
@@ -289,146 +290,147 @@ public class SportsCenterTest  extends TestCase{
     
     @Test
     public void testRoomTypeFileNotFound() throws Exception {
-    	setOutput();
+        setOutput();
 
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		
-		Class<?> cls = SportsCenter.class;
-	    Method method= cls.getDeclaredMethod("loadRoomType", String.class);
-	    method.setAccessible(true);
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+        
+        Class<?> cls = SportsCenter.class;
+        Method method= cls.getDeclaredMethod("loadRoomType", String.class);
+        method.setAccessible(true);
 
-	    String path = "no_this_file.txt";
-	    
-	    method.invoke(sportsCenter, path);
-	    
-	    
-	    
-	    assertEquals("Cannot find file at path: "+path, getOutput().trim());
+        String path = "no_this_file.txt";
+        
+        method.invoke(sportsCenter, path);
+        
+        
+        
+        assertEquals("Cannot find file at path: "+path, getOutput().trim());
 
     }
     
     @Test
     public void testRoomFileNotFound() throws Exception {
-    	
+        
 
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		
-		Class<?> cls = SportsCenter.class;
-	    Method method= cls.getDeclaredMethod("loadRoom", String.class);
-	    method.setAccessible(true);
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+        
+        Class<?> cls = SportsCenter.class;
+        Method method= cls.getDeclaredMethod("loadRoom", String.class);
+        method.setAccessible(true);
 
-	    String path = "no_this_file.txt";
-	    
-	    setOutput();
-	    
-	    method.invoke(sportsCenter, path);
-	    
-	    
-	    
-	    assertEquals("Cannot find file at path: "+path, getOutput().trim());
+        String path = "no_this_file.txt";
+        
+        setOutput();
+        
+        method.invoke(sportsCenter, path);
+        
+        
+        
+        assertEquals("Cannot find file at path: "+path, getOutput().trim());
 
     }
     
     @Test
     public void testUserFileNotFound() throws Exception {
-    	
+        
 
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		
-		Class<?> cls = SportsCenter.class;
-	    Method method= cls.getDeclaredMethod("loadUser", String.class);
-	    method.setAccessible(true);
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+        
+        Class<?> cls = SportsCenter.class;
+        Method method= cls.getDeclaredMethod("loadUser", String.class);
+        method.setAccessible(true);
 
-	    String path = "no_this_file.txt";
-	    
-	    setOutput();
-	    
-	    method.invoke(sportsCenter, path);
-	    
-	    
-	    
-	    assertEquals("Cannot find file at path: "+path, getOutput().trim());
+        String path = "no_this_file.txt";
+        
+        setOutput();
+        
+        method.invoke(sportsCenter, path);
+        
+        
+        
+        assertEquals("Cannot find file at path: "+path, getOutput().trim());
 
     }
     
     
     @Test
     public void testBookingFileNotFound() throws Exception {
-    	
+        
 
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		
-		Class<?> cls = SportsCenter.class;
-	    Method method= cls.getDeclaredMethod("loadBooking", String.class);
-	    method.setAccessible(true);
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+        
+        Class<?> cls = SportsCenter.class;
+        Method method= cls.getDeclaredMethod("loadBooking", String.class);
+        method.setAccessible(true);
 
-	    String path = "no_this_file.txt";
-	    
-	    setOutput();
-	    
-	    method.invoke(sportsCenter, path);
-	    
-	    
-	    
-	    assertEquals("Cannot find file at path: "+path, getOutput().trim());
+        String path = "no_this_file.txt";
+        
+        setOutput();
+        
+        method.invoke(sportsCenter, path);
+        
+        
+        
+        assertEquals("Cannot find file at path: "+path, getOutput().trim());
 
     }
     
     @Test
     public void testClosingDateFileNotFound() throws Exception {
-    	
+        
 
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		
-		Class<?> cls = SportsCenter.class;
-	    Method method= cls.getDeclaredMethod("loadClosingDate", String.class);
-	    method.setAccessible(true);
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+        
+        Class<?> cls = SportsCenter.class;
+        Method method= cls.getDeclaredMethod("loadClosingDate", String.class);
+        method.setAccessible(true);
 
-	    String path = "no_this_file.txt";
-	    
-	    setOutput();
-	    
-	    method.invoke(sportsCenter, path);
-	    
-	    
-	    
-	    assertEquals("Cannot find file at path: "+path, getOutput().trim());
+        String path = "no_this_file.txt";
+        
+        setOutput();
+        
+        method.invoke(sportsCenter, path);
+        
+        
+        
+        assertEquals("Cannot find file at path: "+path, getOutput().trim());
 
     }
     
     @Test
     public void testInitWithSlash() throws Exception {
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		
-		String path = "/";
-	    
-	    // Access private field using reflection
-	    Field field = SportsCenter.class.getDeclaredField("mainClassPath");
-	    field.setAccessible(true); // Make private field accessible
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+        
+        String path = "/";
+        
 
-	    // Modify the private field
-	    field.set(sportsCenter, path);
-	    
+        Field field = SportsCenter.class.getDeclaredField("mainClassPath");
+        field.setAccessible(true); // Make private field accessible
 
+
+        field.set(sportsCenter, path);
+        sportsCenter.init();
+
+        field.set(sportsCenter, Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
         sportsCenter.init();
 
     }
     
     @Test
     public void testInitWithoutSlash() throws Exception {
-    	
+        
  
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		
-		String path = "";
-	    
-	    // Access private field using reflection
-	    Field field = SportsCenter.class.getDeclaredField("mainClassPath");
-	    field.setAccessible(true); // Make private field accessible
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+        
+        String path = "";
+        
+        // Access private field using reflection
+        Field field = SportsCenter.class.getDeclaredField("mainClassPath");
+        field.setAccessible(true); // Make private field accessible
 
-	    // Modify the private field
-	    field.set(sportsCenter, path);
-	    
+        // Modify the private field
+        field.set(sportsCenter, path);
+        
 
         sportsCenter.init();
         
@@ -443,22 +445,22 @@ public class SportsCenterTest  extends TestCase{
     
     @Test
     public void testLoadRoomTypeNullRoom() throws Exception {
-    	setOutput();
-		
-		FilePath filepath = FilePath.ROOM;
-		filepath.setPath("src/execute/assets/test_cases_file/room_data_for_test_case");
-		
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		
-		sportsCenter.init();
-		
-		filepath.setPath("src/execute/assets/room_data.txt");
-		
-		String[] split = getOutput().split("\n");
-		
+        setOutput();
+        
+        FilePath filepath = FilePath.ROOM;
+        filepath.setPath("src/execute/assets/test_cases_file/room_data_for_test_case");
+        
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+        
+        sportsCenter.init();
+        
+        filepath.setPath("src/execute/assets/room_data.txt");
+        
+        String[] split = getOutput().split("\n");
+        
 
-		
-		assertEquals("Cannot find room type: testLoadRoomTypeNullRoom", split[1].trim());
+        
+        assertEquals("Cannot find room type: testLoadRoomTypeNullRoom", split[1].trim());
 
 
 
@@ -467,29 +469,29 @@ public class SportsCenterTest  extends TestCase{
     
     @Test
     public void testLoadBookingNullRoom() throws Exception {
-    	setOutput();
-    	
-    	
-		
-		FilePath filepath = FilePath.BOOKING;
-		filepath.setPath("src/execute/assets/test_cases_file/booking_data_for_test_case");
-		
-		
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		User user=new User("testLoadBookingNullRoom", "N", "123456");
-		sportsCenter.addUser(user);
-		
-		
-		sportsCenter.init();
-		
-		filepath.setPath("src/execute/assets/booking_data.txt");
-		
+        setOutput();
+        
+        
+        
+        FilePath filepath = FilePath.BOOKING;
+        filepath.setPath("src/execute/assets/test_cases_file/booking_data_for_test_case");
+        
+        
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+        User user=new User("testLoadBookingNullRoom", "N", "123456");
+        sportsCenter.addUser(user);
+        
+        
+        sportsCenter.init();
+        
+        filepath.setPath("src/execute/assets/booking_data.txt");
+        
 
-		
-		String[] split = getOutput().split("\n");
-		
-		
-		assertEquals("Cannot find room: testLoadBookingNullRoom", split[3].trim());
+        
+        String[] split = getOutput().split("\n");
+        
+        
+        assertEquals("Cannot find room: testLoadBookingNullRoom", split[3].trim());
 
 
     }
@@ -497,31 +499,31 @@ public class SportsCenterTest  extends TestCase{
     
     @Test
     public void testLoadBookingNullUser() throws Exception {
-    	setOutput();
-    	
-    	
-		
-		FilePath filepath = FilePath.BOOKING;
-		filepath.setPath("src/execute/assets/test_cases_file/booking_data_for_test_case_2");
-		
-		
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		RoomType roomType = new RoomType("testLoadBookingNullUser", "testLoadBookingNullUser", 0);
-		Room room = new Room("testLoadBookingNullUser", roomType);
-		sportsCenter.addRoomType(roomType);
-		sportsCenter.addRoom(room);
-		
-		
-		sportsCenter.init();
-		
-		filepath.setPath("src/execute/assets/booking_data.txt");
-		
+        setOutput();
+        
+        
+        
+        FilePath filepath = FilePath.BOOKING;
+        filepath.setPath("src/execute/assets/test_cases_file/booking_data_for_test_case_2");
+        
+        
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+        RoomType roomType = new RoomType("testLoadBookingNullUser", "testLoadBookingNullUser", 0);
+        Room room = new Room("testLoadBookingNullUser", roomType);
+        sportsCenter.addRoomType(roomType);
+        sportsCenter.addRoom(room);
+        
+        
+        sportsCenter.init();
+        
+        filepath.setPath("src/execute/assets/booking_data.txt");
+        
 
-		
-		String[] split = getOutput().split("\n");
-		
-		
-		assertEquals("Cannot find user: testLoadBookingNullUser", split[3].trim());
+        
+        String[] split = getOutput().split("\n");
+        
+        
+        assertEquals("Cannot find user: testLoadBookingNullUser", split[3].trim());
 
 
     }
@@ -529,89 +531,85 @@ public class SportsCenterTest  extends TestCase{
     @Test
     public void testSaveData() throws Exception {
 
-		
-		FilePath roomTypePath = FilePath.ROOMTYPE;
-		roomTypePath.setPath("src/execute/assets/test_cases_file/saveDataTest");
-		
-		FilePath roomPath = FilePath.ROOM;
-		roomPath.setPath("src/execute/assets/test_cases_file/saveDataTest");
-		
-		FilePath userPath = FilePath.USER;
-		userPath.setPath("src/execute/assets/test_cases_file/saveDataTest");
-		
-		FilePath bookingPath = FilePath.BOOKING;
-		bookingPath.setPath("src/execute/assets/test_cases_file/saveDataTest");
-		
-		FilePath closingdatePath = FilePath.CLOSINGDATE;
-		closingdatePath.setPath("src/execute/assets/test_cases_file/saveDataTest");
-		
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		sportsCenter.saveData();
-		
-		
-		
-		
-		roomTypePath.setPath("src/execute/assets/room_type_data.txt");
-		roomPath.setPath("src/execute/assets/room_data.txt");
-		userPath.setPath("src/execute/assets/user_data.txt");
-		bookingPath.setPath("src/execute/assets/booking_data.txt");
-		closingdatePath.setPath("src/execute/assets/closing_date_data.txt");
-		
+        
+        FilePath roomTypePath = FilePath.ROOMTYPE;
+        roomTypePath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+        
+        FilePath roomPath = FilePath.ROOM;
+        roomPath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+        
+        FilePath userPath = FilePath.USER;
+        userPath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+        
+        FilePath bookingPath = FilePath.BOOKING;
+        bookingPath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+        
+        FilePath closingdatePath = FilePath.CLOSINGDATE;
+        closingdatePath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+        
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+        sportsCenter.saveData();
+        
+        
+        
+        
+        roomTypePath.setPath("src/execute/assets/room_type_data.txt");
+        roomPath.setPath("src/execute/assets/room_data.txt");
+        userPath.setPath("src/execute/assets/user_data.txt");
+        bookingPath.setPath("src/execute/assets/booking_data.txt");
+        closingdatePath.setPath("src/execute/assets/closing_date_data.txt");
+        
 
-	
+    
     }
     
     @Test
     public void testSaveDataError() throws Exception {
-    	String readOnlyPath = "src/execute/assets/test_cases_file/readOnly";
-    	
+        FilePath roomTypePath = FilePath.ROOMTYPE;
+        FilePath roomPath = FilePath.ROOM;
+        FilePath userPath = FilePath.USER;
+        FilePath bookingPath = FilePath.BOOKING;
+        FilePath closingdatePath = FilePath.CLOSINGDATE;
+
+        
+        String readOnlyPath = "src/execute/assets/test_cases_file/readOnly";
+        
         String decodedPath = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8");
         if (decodedPath.startsWith("/") ) {
             decodedPath = decodedPath.substring(1);
         }
         Path basePath = Paths.get(decodedPath).getParent();
-
-
         String path = basePath.resolve(readOnlyPath).toString();
-    	
-    	
-    	File file = new File(path);
-         
+        
+        
+        File file = new File(path);
+        file.createNewFile();
+        file.setReadOnly();
 
-    	file.createNewFile();
+        
+        roomTypePath.setPath(path);
+        roomPath.setPath(path);
+        userPath.setPath(path);
+        bookingPath.setPath(path);
+        closingdatePath.setPath(path);
+        
+        SportsCenter sportsCenter = SportsCenter.getInstance();
+            
+        setOutput();
 
+        sportsCenter.saveData();
+		
 
-    	file.setReadOnly();
-
-		FilePath roomTypePath = FilePath.ROOMTYPE;
-		roomTypePath.setPath(path);
-		
-		FilePath roomPath = FilePath.ROOM;
-		roomPath.setPath(path);
-		
-		FilePath userPath = FilePath.USER;
-		userPath.setPath(path);
-		
-		FilePath bookingPath = FilePath.BOOKING;
-		bookingPath.setPath(path);
-		
-		FilePath closingdatePath = FilePath.CLOSINGDATE;
-		closingdatePath.setPath(path);
-		
-		SportsCenter sportsCenter = SportsCenter.getInstance();
-		
-		sportsCenter.saveData();
-		
-		
-		
-		
 		roomTypePath.setPath("src/execute/assets/room_type_data.txt");
 		roomPath.setPath("src/execute/assets/room_data.txt");
 		userPath.setPath("src/execute/assets/user_data.txt");
 		bookingPath.setPath("src/execute/assets/booking_data.txt");
 		closingdatePath.setPath("src/execute/assets/closing_date_data.txt");
 		
-
+		String[] output = getOutput().split("\n");
+        for (int i=0;i<5;i++){
+            assertEquals("Cannot write in file: "+path, output[i].trim());
+        }
 	
     }
     
