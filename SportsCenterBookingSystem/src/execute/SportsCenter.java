@@ -6,12 +6,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.net.URLDecoder;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -69,7 +72,7 @@ public class SportsCenter {
 	}
 	
 	public void init() {
-		 try {
+
 				
 
 				String roomTypePath = getDecodePath(FilePath.ROOMTYPE.getPath());
@@ -85,9 +88,7 @@ public class SportsCenter {
 				loadBooking(bookingPath);
 				loadClosingDate(closingDatePath);
 
-			} catch (Exception e) {
-				System.out.println("Cannot load files.");
-			}
+
 		
 	}
 
@@ -443,17 +444,33 @@ public class SportsCenter {
 		
 	}
 
-	private String getDecodePath(String relativePath) {
+	public String getDecodePath(String relativePath) {
+		String decodedPath=null;
 		try{
-			String decodedPath = URLDecoder.decode(mainClassPath, "UTF-8");
-			if (decodedPath.startsWith("/") ) {
-				decodedPath = decodedPath.substring(1);
-			}
-			Path basePath = Paths.get(decodedPath).getParent();
+			decodedPath = URLDecoder.decode(mainClassPath, "UTF-8");
 
-			return basePath.resolve(relativePath).toString();
+			Path basePath = null;
+
+			if(decodedPath.contains("Users")){
+				String[] splittedDecode = decodedPath.split("/");
+				List<String> splittedDecodeList = Arrays.asList(splittedDecode);
+				int index = splittedDecodeList.indexOf("Users");
+
+				splittedDecode = Arrays.copyOfRange(splittedDecode, index, splittedDecode.length);
+
+				decodedPath= String.join("/", splittedDecode);
+				decodedPath = "/"+decodedPath;
+
+			}
+			basePath= Paths.get(decodedPath).getParent();
+
+
+			String resolvedPath = basePath.resolve(relativePath).toString().trim();
+
+
+			return resolvedPath;
 		}
-		catch(Exception e){System.out.println("Cannot decode path: "+mainClassPath);}
+		catch(Exception e){System.out.println("Cannot decode path: "+decodedPath);}
 
 		return relativePath;
 

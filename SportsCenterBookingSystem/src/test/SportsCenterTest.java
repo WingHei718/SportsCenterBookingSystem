@@ -17,9 +17,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.URLDecoder;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -421,7 +418,7 @@ public class SportsCenterTest  extends TestCase{
  
         SportsCenter sportsCenter = SportsCenter.getInstance();
         
-        String path = "";
+        String path = "wrongpath";
         
         // Access private field using reflection
         Field field = SportsCenter.class.getDeclaredField("mainClassPath");
@@ -440,7 +437,8 @@ public class SportsCenterTest  extends TestCase{
 
 
     }
-    
+
+
     
     @Test
     public void testLoadRoomTypeNullRoom() throws Exception {
@@ -572,25 +570,18 @@ public class SportsCenterTest  extends TestCase{
 
         
         String readOnlyPath = "src/execute/assets/test_cases_file/readOnly";
+
         
-        String decodedPath = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8");
-        if (decodedPath.startsWith("/") ) {
-            decodedPath = decodedPath.substring(1);
-        }
-        Path basePath = Paths.get(decodedPath).getParent();
-        String path = basePath.resolve(readOnlyPath).toString();
-        
-        
-        File file = new File(path);
+        File file = new File(sportsCenter.getDecodePath(readOnlyPath));
         file.createNewFile();
         file.setReadOnly();
 
         
-        roomTypePath.setPath(path);
-        roomPath.setPath(path);
-        userPath.setPath(path);
-        bookingPath.setPath(path);
-        closingdatePath.setPath(path);
+        roomTypePath.setPath(readOnlyPath);
+        roomPath.setPath(readOnlyPath);
+        userPath.setPath(readOnlyPath);
+        bookingPath.setPath(readOnlyPath);
+        closingdatePath.setPath(readOnlyPath);
         
         SportsCenter sportsCenter = SportsCenter.getInstance();
             
@@ -607,7 +598,7 @@ public class SportsCenterTest  extends TestCase{
 		
 		String[] output = getOutput().split("\n");
         for (int i=0;i<5;i++){
-            assertEquals("Cannot write in file: "+path, output[i].trim());
+            assertEquals("Cannot write in file: "+sportsCenter.getDecodePath(readOnlyPath), output[i].trim());
         }
 	
     }
