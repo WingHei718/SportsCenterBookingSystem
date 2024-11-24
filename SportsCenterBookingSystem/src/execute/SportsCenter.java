@@ -416,7 +416,11 @@ public class SportsCenter {
 	}
 	
 	public int getNextBookingID() {
-		return allBookings.size() + 1;
+		int id = allBookings.size()+1;
+		while (getBookingByID(Integer.toString(id))!=null) {
+			id++;
+		}
+		return id;
 	}
 	
 	public int printAllRoomType (){

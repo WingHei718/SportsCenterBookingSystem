@@ -648,6 +648,37 @@ public class SportsCenterTest  extends TestCase{
         Room availableRoom = sportsCenter.checkAvailability(roomType1, "231201", 12, 14);
 
     }
+    
+    
+    @Test
+    public void testGetNextBookingID() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+    	SportsCenter sportsCenter = SportsCenter.getInstance();
+        RoomType roomType1 = new RoomType("IIJ60V", "Testing", 800);
+
+        sportsCenter.addRoomType(roomType1);
+
+        Room room1 = new Room("J9ED9H", roomType1);
+        Room room2 = new Room("O39VY8", roomType1);
+
+        sportsCenter.addRoom(room1);
+        sportsCenter.addRoom(room2);
+        
+        
+        Field field = SportsCenter.class.getDeclaredField("allBookings");
+        field.setAccessible(true);
+        ArrayList<Booking> allBookings = (ArrayList<Booking>) field.get(sportsCenter);
+        
+        int id = allBookings.size()+2;
+
+
+        Booking booking1 = new Booking(room1, "001", "231201", 10, 12, 100, "N", Integer.toString(id));
+
+        sportsCenter.addBooking(booking1);
+
+
+        sportsCenter.getNextBookingID();
+
+    }
 
     
     
