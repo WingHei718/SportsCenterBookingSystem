@@ -99,7 +99,7 @@ public class SportsCenterTest  extends TestCase{
         boolean isClosing = sportsCenter.isClosingDate(closingDate);
         assertTrue(isClosing);
 
-        boolean isNotClosing = sportsCenter.isClosingDate("231213");
+        boolean isNotClosing = sportsCenter.isClosingDate("231214");
         assertFalse(isNotClosing);
 
         boolean isNullClosing = sportsCenter.isClosingDate(null);
