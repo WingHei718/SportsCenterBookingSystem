@@ -15,7 +15,7 @@ public class CmdMarkClosingDate implements Command{
 		if (sportsCenter.isClosingDate(date)) {
 			System.out.println("The date was already marked as closing date.");
 		} else {
-			System.out.printf("The date you would like to mark as closing date is %s, are you confirmed to mark? (Y/N):\n", date);
+			System.out.printf("The date you would like to mark as closing date is %s, are you confirmed to mark? (Y/N):\n", Common.formatDate(date));
 
 			String action = "";
 			String[] validCommand= {"Y","N"};
