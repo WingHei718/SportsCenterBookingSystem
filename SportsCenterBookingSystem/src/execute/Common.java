@@ -67,7 +67,7 @@ public class Common {
                 return input;
             }
             
-            System.out.printf("Invalid date or Time, please input again.\n");
+            System.out.printf("Invalid date or time, please input again.\n");
         }
     }
     public static int[] getValidYearAndMonth(Scanner scanner) {
