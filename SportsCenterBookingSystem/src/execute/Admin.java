@@ -53,7 +53,7 @@ public class Admin implements UserRole {
 					viewBookingService.viewBooking(sportsCenter.getAllBookings(), scanner);
 					break;
 			case "u":
-				System.out.println("Please input the User ID you would like to view booking for:"); //maybe all this ask for user ID can be put in a function
+				System.out.println("Please input the User ID you would like to view booking for:");
 				String userID = scanner.nextLine().trim();
 				User user = sportsCenter.getUserByID(userID);
 
