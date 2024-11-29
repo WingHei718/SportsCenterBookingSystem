@@ -55,6 +55,11 @@ public class DateAndTime {
 			if(endTime>23) {
 				return false;
 			}
+			
+			if (endTime<=startTime && endTime!=0) {
+				return false;
+			}
+			
 			return true;
 		}
 		catch (NumberFormatException e){return false;}
