@@ -1,4 +1,0 @@
-1 badminton 40
-2 basketball 70
-3 football 80
-4 tennis 40
