@@ -23,7 +23,9 @@ import static org.junit.Assert.*;
 
 public class UserTest  extends TestCase{
 	@Before
-	public void init() {
+	public void init() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+		setup();
+
 		SportsCenter sportsCenter = SportsCenter.getInstance();
         
 

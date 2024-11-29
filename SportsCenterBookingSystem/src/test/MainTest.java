@@ -32,7 +32,9 @@ public class MainTest extends TestCase{
 
 	
 	@Before
-	public void init() {
+	public void init() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+		setup();
+
 		SportsCenter sportsCenter = SportsCenter.getInstance();
 		UserSessionManager.getInstance().setCurrentUser(null);
 

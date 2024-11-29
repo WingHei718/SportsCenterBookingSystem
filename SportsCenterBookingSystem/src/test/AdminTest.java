@@ -175,7 +175,7 @@ public class AdminTest extends TestCase{
 	    @Test
 	    public void testCancelBookingWrongUserID() {
 	    	Admin admin = new Admin();
-	        String input = "c\n004\n001\n1\nN\n";
+	        String input = "c\nwrongid\n001\n1\nN\n";
 	        InputStream in = new ByteArrayInputStream(input.getBytes());
 	        System.setIn(in);
 	        Scanner scanner = new Scanner(System.in);

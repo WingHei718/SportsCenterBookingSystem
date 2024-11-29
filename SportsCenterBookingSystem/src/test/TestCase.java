@@ -23,8 +23,8 @@ public class TestCase{
 	private static FilePath closingdatePath = FilePath.CLOSINGDATE;
 
 
-    @BeforeClass
-	public static void setup() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+    @Before
+	public void setup() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 
     	setPathToBackup();
 
@@ -34,8 +34,8 @@ public class TestCase{
 	}
 
 
-    @AfterClass
-	public static void reset() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
+    @After
+	public void reset() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
 		Field roomTypeField = SportsCenter.class.getDeclaredField("allRoomTypes");
 		Field roomField = SportsCenter.class.getDeclaredField("allRooms");
 		Field userField = SportsCenter.class.getDeclaredField("allUsers");
