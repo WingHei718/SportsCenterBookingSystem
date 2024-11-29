@@ -109,7 +109,7 @@ public class DateAndTimeTest  extends TestCase{
     
     @Test
     public void testInvalidDateAndTime9() {
-        Assert.assertTrue(DateAndTime.isDateAndTimeValid("240930 8-8")); // InValid hour
+        Assert.assertFalse(DateAndTime.isDateAndTimeValid("240930 8-8")); // InValid hour
     } 
     
     @Test
