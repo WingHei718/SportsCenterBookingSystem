@@ -76,7 +76,7 @@ public class User {
 
 		boolean isBookingSuccess = false;
 
-		try {
+		
 
 			if (roomTypeCount > 0) {
 
@@ -96,17 +96,20 @@ public class User {
 
 				String[] splittedDateAndTime = dateAndTime.split(" ");
 				String date = splittedDateAndTime[0];
+				
+				while (sportsCenter.isClosingDate(date)) {
+					String formatDate = Common.formatDate(date);
+					System.out.printf("Sorry, the sports center will be closed on %s, please input again:\n", formatDate);
+					dateAndTime = Common.getValidDateandTime(scanner);
+					splittedDateAndTime = dateAndTime.split(" ");
+					date = splittedDateAndTime[0];
+				}	
+
 				String time = splittedDateAndTime[1];
 				String[] splittedTime = time.split("-");
 				int startTime = Integer.parseInt(splittedTime[0]);
 				int endTime = Integer.parseInt(splittedTime[1]);
-
-				if (sportsCenter.isClosingDate(date)) {
-					String formatDate = Common.formatDate(date);
-					System.out.printf("Sorry, the sports center will be closed on %s\n", formatDate);
-					throw new ExBookingFailed(ExBookingFailed.FailReason.CLOSEDATE);
-
-				} else {
+				
 
 					Room room = sportsCenter.checkAvailability(roomType, date, startTime, endTime);
 
@@ -137,7 +140,7 @@ public class User {
 							break;
 
 						default:
-							throw new ExBookingFailed(ExBookingFailed.FailReason.NOTPAID);
+							
 						}
 
 					} 
@@ -157,17 +160,11 @@ public class User {
 							break;
 
 						default:
-							throw new ExBookingFailed(ExBookingFailed.FailReason.NOTAVAIL);
+							
 						}
 					}
 				}
-			} else {
-				throw new ExBookingFailed(ExBookingFailed.FailReason.NOROOMTYPE);
-			}
-		} catch (ExBookingFailed e) {
-			e.printMessage();
-		}
-
+			
 		return isBookingSuccess;
 
 	}
