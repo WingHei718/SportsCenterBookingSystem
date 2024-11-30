@@ -7,8 +7,9 @@ public class Main {
 	private static User currentUser = null;
 
 	public static void main(String[] args) {
-		SportsCenter sportsCenter = SportsCenter.getInstance();
 		System.out.println("Welcome to the Sports Centre Booking System!");
+		SportsCenter sportsCenter = SportsCenter.getInstance();
+		
         
 		boolean isExit = false;
 		Scanner scanner = new Scanner(System.in);
