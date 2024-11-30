@@ -208,8 +208,7 @@ public class User {
 
 			System.out.println("Please input the Booking ID you would like to cancel:");
 			String bookingID = scanner.nextLine().trim();
-			//Booking booking = this.getNotCancelledBookingByID(bookingID);
-			Booking booking = SportsCenter.getInstance().getBookingByID(bookingID);
+			Booking booking = this.getNotCancelledBookingByID(bookingID);
 			while (booking == null) {
 				System.out.println("Booking ID not found, please input again:");
 				bookingID = scanner.nextLine().trim();
