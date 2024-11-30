@@ -28,8 +28,22 @@ Installation
 
 User Guideline
 ------------------------------------------------------------
-Login:  
-Bookings:
+1.  Register / Login an account  
+2.  Use the commands showed on the console
+3.  Logout to save all changes
+4.  Close the system / Switch an account 
+
+Cmds for All Users:  
+1.  Make Booking  
+2.  View Booking  
+3.  Cancel Booking
+
+3 Additional Cmds for Admin:  
+1.  Mark Closing Date of the Sports Center
+2.  Modify the Price of a Room Type
+3.  Add New Room
+
+*Please make sure to create one admin account to add some
+rooms before making any bookings
 
 ------------------------------------------------------------
-
