@@ -20,7 +20,7 @@ public class Main {
         	try {
         		
         		if(currentUser==null) {
-        			System.out.println("Please input your action ([r] for Register, [l] for login, [e] for exit system) :");
+        			System.out.println("Please input your action ([r] for register, [l] for login, [e] for exit system) :");
         			action = scanner.nextLine();
         			
         			switch(action) {
