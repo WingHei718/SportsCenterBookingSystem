@@ -144,7 +144,7 @@ public class User {
 					
 					else {
 						System.out.println(
-								"Sorry, no room is not available at the time you want. Would you like to book another time or room? (Y/N):");
+								"Sorry, no room is available at the time you want. Would you like to book another time or room? (Y/N):");
 
 						String[] validCommand= {"Y","N"};
 						String action = Common.getValidInput(scanner, validCommand, Common.InputType.COMMAND);
@@ -208,7 +208,8 @@ public class User {
 
 			System.out.println("Please input the Booking ID you would like to cancel:");
 			String bookingID = scanner.nextLine().trim();
-			Booking booking = this.getNotCancelledBookingByID(bookingID);
+			//Booking booking = this.getNotCancelledBookingByID(bookingID);
+			Booking booking = SportsCenter.getInstance().getBookingByID(bookingID);
 			while (booking == null) {
 				System.out.println("Booking ID not found, please input again:");
 				bookingID = scanner.nextLine().trim();
