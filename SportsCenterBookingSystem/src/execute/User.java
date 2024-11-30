@@ -68,7 +68,7 @@ public class User {
 		SportsCenter sportsCenter = SportsCenter.getInstance();
     	Scanner scanner = new Scanner(System.in);
     	
-    	sportsCenter.printAllClosingDate();
+    	//sportsCenter.printAllClosingDate();
     	
 		int roomTypeCount = sportsCenter.printAllRoomType();
 		
@@ -115,7 +115,7 @@ public class User {
 	        		action = scanner.nextLine();
 	        	}
 				switch(action) {
-					case "Y":
+					case "y":
 						System.out.println("Payment collected. Booking Success.");
 						int nextBookingID = sportsCenter.getNextBookingID();
 						Booking booking = new Booking(room, this.userID, date, startTime, endTime, bookingPrice, "N", String.valueOf(nextBookingID));
@@ -185,12 +185,12 @@ public class User {
         	int refund = booking.getPricePaid()/2;
         	System.out.printf("Refund for cancelled booking: $%d, are you confirmed to cancel booking? (Y/N):\n", refund);
         	String action = scanner.nextLine();
-        	while (!action.equals("Y") && !action.equals("N")) {
+        	while (!action.equals("y") && !action.equals("N")) {
         		System.out.println("Invalid command, please input again:");
         		action = scanner.nextLine();
         	}
         	switch(action) {
-        		case "Y":
+        		case "y":
         			booking.cancelBookingByUser();
         			System.out.println("Booking cancelled.");
         			break;

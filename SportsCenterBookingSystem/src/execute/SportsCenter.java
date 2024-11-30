@@ -180,7 +180,7 @@ public class SportsCenter {
                 allClosingDates.add(date);
             }
             
-            System.out.println("Finished loading closing dates.");
+            //System.out.println("Finished loading closing dates.");
             scanner.close();
 
         } catch (FileNotFoundException e) {

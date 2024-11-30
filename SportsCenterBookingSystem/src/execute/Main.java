@@ -7,8 +7,9 @@ public class Main {
 	private static User currentUser = null;
 
 	public static void main(String[] args) {
-		SportsCenter sportsCenter = SportsCenter.getInstance();
 		System.out.println("Welcome to the Sports Centre Booking System!");
+		SportsCenter sportsCenter = SportsCenter.getInstance();
+		
         
 		boolean isExit = false;
 		Scanner scanner = new Scanner(System.in);
@@ -19,7 +20,7 @@ public class Main {
         	try {
         		
         		if(currentUser==null) {
-        			System.out.println("Please input your action ([r] for Register, [l] for login, [e] for exit system) :");
+        			System.out.println("Please input your action ([r] for register, [l] for login, [e] for exit system) :");
         			action = scanner.nextLine();
         			
         			switch(action) {
