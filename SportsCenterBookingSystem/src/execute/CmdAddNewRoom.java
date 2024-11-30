@@ -12,14 +12,11 @@ public class CmdAddNewRoom implements Command{
     	
     	int roomTypeCount = sportsCenter.printAllRoomType();
     	
-    	if (roomTypeCount==0) {
-    		action = "t";
-    		
-    	} else {
+    	
     		System.out.println("Please input your action ([t] for add room type, [r] for add room to existing room type):");
 			String[] validCommand= {"t","r"};
 			action = Common.getValidInput(scanner, validCommand, Common.InputType.COMMAND);
-    	}
+    	
     	
 		switch(action) {
             case "t":
