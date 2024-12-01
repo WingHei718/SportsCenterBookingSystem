@@ -19,9 +19,7 @@ import org.junit.Test;
 
 public class ViewBookingServiceTest  extends TestCase{
 	@Before
-	public void init() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
-        setup();
-
+	public void init() {
 		SportsCenter sportsCenter = SportsCenter.getInstance();
         
 
