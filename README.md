@@ -43,7 +43,14 @@ Cmds for All Users:
 2.  Modify the Price of a Room Type
 3.  Add New Room
 
-*Please make sure to create one admin account to add some
-rooms before making any bookings
+Important notes:  
+
+1. Please make sure to create one admin account to add some
+   rooms before making any bookings
+
+3. Try not to edit the data files(.txt) directly
+
+4. If editing the data files, please strictly follow the
+   formats provided
 
 ------------------------------------------------------------
