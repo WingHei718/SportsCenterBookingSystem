@@ -127,9 +127,21 @@ public class UserTest  extends TestCase{
 	    }
 	 @Test
 	    public void testMakeBooking_normalUser() {
-	    	User user=new User("002", "N", "123456");
+	    	
+			SportsCenter sportsCenter = SportsCenter.getInstance();
+
+			User user = new User("1JXFQU", "A", "111111");
+			sportsCenter.addUser(user);
+	
+			RoomType roomType = new RoomType("QA9XT6", "QA9XT6", 0);
+			sportsCenter.addRoomType(roomType);
+	
+			Room room = new Room("08LNWC", roomType);
+			sportsCenter.addRoom(room);
+
 	        UserSessionManager.getInstance().setCurrentUser(user);
-	        String input = "1\n240701 8-10\nY\n";
+
+	        String input = "1JXFQU\nQA9XT6\n240701 8-10\nY\n";
 	        InputStream in = new ByteArrayInputStream(input.getBytes());
 	        System.setIn(in);
 	        user.makeBooking(new Scanner(System.in));
@@ -192,18 +204,40 @@ public class UserTest  extends TestCase{
 	 
 @Test
 public void testMakeBooking_admin() {
-	User user = new User("001", "A", "123456");
+	
+	SportsCenter sportsCenter = SportsCenter.getInstance();
+
+	User user = new User("RK40KL", "A", "111111");
+	sportsCenter.addUser(user);
+
+	RoomType roomType = new RoomType("A04YHH", "A04YHH", 0);
+	sportsCenter.addRoomType(roomType);
+
+	Room room = new Room("HKRG8H", roomType);
+	sportsCenter.addRoom(room);
     UserSessionManager.getInstance().setCurrentUser(user);
-    String input = "001\n6\n1\n240701 11-12\nN\n";
+
+
+    String input = "RK40KL\nA04YHH\n240701 11-12\nN\n";
     InputStream in = new ByteArrayInputStream(input.getBytes());
     System.setIn(in);
     user.makeBooking(new Scanner(System.in));
 }
 @Test
 public void testMakeBooking_DateOrRoomError() {
-	User user = new User("001", "A", "123456");
+	SportsCenter sportsCenter = SportsCenter.getInstance();
+
+	User user = new User("RFMH39", "A", "111111");
+	sportsCenter.addUser(user);
+
+	RoomType roomType = new RoomType("R4GPNC", "R4GPNC", 0);
+	sportsCenter.addRoomType(roomType);
+
+	Room room = new Room("C2SU6X", roomType);
+	sportsCenter.addRoom(room);
     UserSessionManager.getInstance().setCurrentUser(user);
-    String input = "001\n6\n1\n241003 15-20\na\nY";
+
+    String input = "RFMH39\nJ2PHLG\nR4GPNC\n241003 15-20\na\nY";
     InputStream in = new ByteArrayInputStream(input.getBytes());
     System.setIn(in);
     user.makeBooking(new Scanner(System.in));
@@ -212,7 +246,11 @@ public void testMakeBooking_DateOrRoomError() {
 
 @Test
 public void testViewBooking_a_admin() {
-	User user = new User("001", "A", "123456");
+	SportsCenter sportsCenter = SportsCenter.getInstance();
+
+	User user = new User("W3QTIC", "A", "111111");
+	sportsCenter.addUser(user);
+
     UserSessionManager.getInstance().setCurrentUser(user);
     String input = "a\np\nn\ns\n2024 1\nt\nq\n";
     InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -222,9 +260,18 @@ public void testViewBooking_a_admin() {
 
 @Test
 public void testViewBooking_admin() {
-	User user = new User("001", "A", "123456");
-    UserSessionManager.getInstance().setCurrentUser(user);
-    String input = "\nr\n4\n1\nq\n";
+	SportsCenter sportsCenter = SportsCenter.getInstance();
+
+	User user = new User("C1OCG8", "A", "111111");
+	sportsCenter.addUser(user);
+
+	RoomType roomType = new RoomType("A5JYRF", "A5JYRF", 0);
+	sportsCenter.addRoomType(roomType);
+
+	Room room = new Room("R64B5Q", roomType);
+	sportsCenter.addRoom(room);
+
+    String input = "\nr\nAZOK3V\nR64B5Q\nq\n";
     InputStream in = new ByteArrayInputStream(input.getBytes());
     System.setIn(in);
     user.viewBooking(new Scanner(System.in));
@@ -241,9 +288,25 @@ public void testViewBooking_user() {
 
     @Test
     public void testCancelBooking_admin() {
-    	User user = new User("001", "A", "123456");
+		SportsCenter sportsCenter = SportsCenter.getInstance();
+
+		User user = new User("391XRG", "A", "111111");
+		sportsCenter.addUser(user);
+
+		RoomType roomType = new RoomType("W09ISK", "W09ISK", 0);
+		sportsCenter.addRoomType(roomType);
+
+		Room room = new Room("3U28T8", roomType);
+		sportsCenter.addRoom(room);
+
+		Booking booking = new Booking(room, "391XRG", "240101", 1, 2, 0, "N", "VK6R2D");
+		sportsCenter.addBooking(booking);
+		user.addBooking(booking);
+		room.addBooking(booking);
+
         UserSessionManager.getInstance().setCurrentUser(user);
-        String input = "001\n6\nN\n";
+
+        String input = "391XRG\nVK6R2D\nN\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         user.cancelBooking(new Scanner(System.in));

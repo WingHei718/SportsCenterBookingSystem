@@ -2,7 +2,9 @@ package test;
 
 
 import execute.CmdAddNewRoom;
+import execute.RoomType;
 import execute.SportsCenter;
+import execute.User;
 
 import org.junit.Test;
 
@@ -29,20 +31,34 @@ public class CmdAddNewRoomTest  extends TestCase{
 	@Test
     public void testAddRoomToExsitingType() {
         CmdAddNewRoom cmdAddNewRoom = new CmdAddNewRoom();
-        String input = "r\n1\n";
+        String input = "r\n7P1P7Y\n";
 	    InputStream in = new ByteArrayInputStream(input.getBytes());
 	    System.setIn(in);
 	    Scanner scanner = new Scanner(System.in);
+
+		SportsCenter sportsCenter = SportsCenter.getInstance();
+		RoomType roomType = new RoomType("7P1P7Y", "7P1P7Y", 0);
+		sportsCenter.addRoomType(roomType);
+			
+
+
 	    cmdAddNewRoom.execute(scanner);
 	    scanner.close();
     }
 	@Test
     public void testAddRoomToExsitingType_NotExsit() {
         CmdAddNewRoom cmdAddNewRoom = new CmdAddNewRoom();
-        String input = "r\n6\ninvalid\n1\n";
+        String input = "r\n6\ninvalid\n97FJF8\n";
 	    InputStream in = new ByteArrayInputStream(input.getBytes());
 	    System.setIn(in);
 	    Scanner scanner = new Scanner(System.in);
+
+		SportsCenter sportsCenter = SportsCenter.getInstance();
+
+		RoomType roomType = new RoomType("97FJF8", "97FJF8", 0);
+		sportsCenter.addRoomType(roomType);
+	
+
 	    cmdAddNewRoom.execute(scanner);
 	    scanner.close();
     }
