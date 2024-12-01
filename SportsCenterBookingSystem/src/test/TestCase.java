@@ -13,7 +13,6 @@ import execute.SportsCenter.FilePath;
 
 
 public class TestCase{
-    // 测试套件类内容
 	
 	private static SportsCenter sportsCenter = SportsCenter.getInstance();
 	private static FilePath roomTypePath = FilePath.ROOMTYPE;

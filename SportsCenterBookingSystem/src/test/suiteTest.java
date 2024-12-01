@@ -32,7 +32,6 @@ import org.junit.runners.Suite.SuiteClasses;
     
 })
 public class suiteTest {
-    // 测试套件类内容
 	
 
 }

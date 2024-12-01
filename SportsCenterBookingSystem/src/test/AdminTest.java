@@ -13,19 +13,15 @@ import execute.Admin;
 
 
 public class AdminTest extends TestCase{
-	
-
-	
-	
-		
+			
 	@Test
 	public void testShowActionMenu_InputM() {
 	    Admin admin = new Admin();
 	    InputStream in = new ByteArrayInputStream("m\n".getBytes());
-	    System.setIn(in); // 设置输入流
-	    Scanner scanner = new Scanner(in); // 创建一个新的Scanner对象
-	    assertEquals("m", admin.showActionMenu(scanner)); // 调用方法并断言结果
-	    scanner.close(); // 关闭scanner
+	    System.setIn(in);
+	    Scanner scanner = new Scanner(in);
+	    assertEquals("m", admin.showActionMenu(scanner));
+	    scanner.close();
 	}
 
 	@Test

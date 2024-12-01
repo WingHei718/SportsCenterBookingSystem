@@ -114,7 +114,6 @@ public class CommonTest {
 
 	@Test
 	public void testGetValidYearAndMonthWithInvalidInput() {
-		// 传入一个无效的年份和月份字符串，然后是一个有效的
 		String inputString = "2024 13\n2024 05\n";
 		Scanner scanner = new Scanner(inputString);
 
@@ -127,7 +126,6 @@ public class CommonTest {
 
 	@Test
 	public void testGetValidYearAndMonthWithNonNumericInput() {
-		// 传入非数字的年份和月份字符串
 		String inputString = "abc 05\n2024 05\n";
 		Scanner scanner = new Scanner(inputString);
 
@@ -140,7 +138,6 @@ public class CommonTest {
 
 	@Test
 	public void testGetValidYearAndMonthWithNonNumericInput1() {
-		// 传入非数字的年份和月份字符串
 		String inputString = "2024 abc\n2024 05\n";
 		Scanner scanner = new Scanner(inputString);
 
@@ -153,7 +150,6 @@ public class CommonTest {
 
 	@Test
 	public void testGetValidYearAndMonthWithWrongFormat() {
-		// 传入格式错误的年份和月份字符串
 		String inputString = "2147483648 05\n2100 05\n1100 05\n2024abc\n2024 05\n";
 		Scanner scanner = new Scanner(inputString);
 
@@ -166,7 +162,6 @@ public class CommonTest {
 
 	@Test
 	public void testGetValidPositiveNumber() {
-		// 传入一个有效的正整数
 		String inputString = "5\n";
 		Scanner scanner = new Scanner(inputString);
 
@@ -178,7 +173,6 @@ public class CommonTest {
 
 	@Test
 	public void testGetValidPositiveNumber0() {
-		// 传入一个有效的正整数
 		String inputString = "0\n5\n";
 		Scanner scanner = new Scanner(inputString);
 
@@ -190,7 +184,6 @@ public class CommonTest {
 
 	@Test
 	public void testGetValidPositiveNumberWithInvalidInput() {
-		// 传入一个无效的输入，然后是一个有效的正整数
 		String inputString = "-1\n5\n";
 		Scanner scanner = new Scanner(inputString);
 
@@ -202,7 +195,6 @@ public class CommonTest {
 
 	@Test
 	public void testGetValidPositiveNumberWithNonNumericInput() {
-		// 传入非数字的输入，然后是一个有效的正整数
 		String inputString = "abc\n5\n";
 		Scanner scanner = new Scanner(inputString);
 
@@ -214,7 +206,7 @@ public class CommonTest {
 
 	@Test
 	public void testGetValidPositiveNumberWithLargeInput() {
-		// 传入一个过大的数字，可能会抛出 NumberFormatException
+		//NumberFormatException
 		String inputString = "9223372036854775808\n5\n"; // Long.MAX_VALUE + 1
 		Scanner scanner = new Scanner(inputString);
 
@@ -226,7 +218,6 @@ public class CommonTest {
 
 	@Test
 	public void testFormatDateWithDifferentYear() {
-		// 测试不同年份的日期格式化
 		String originalDate = "1130";
 		String expectedDate = "30-Nov-2011";
 		String formattedDate = Common.formatDate("20111310");
