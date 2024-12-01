@@ -143,7 +143,7 @@ public class Common {
         String message = "";
     
         while (true) {
-            System.out.printf("Please input a valid positive number for %s:\n", type.getName());
+            //System.out.printf("Please input a valid positive number for %s:\n", type.getName());
             input = scanner.nextLine().trim();
     
             if (input.matches("\\d+")) { // Match positive integers

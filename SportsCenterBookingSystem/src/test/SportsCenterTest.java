@@ -445,13 +445,13 @@ public class SportsCenterTest  extends TestCase{
         setOutput();
         
         FilePath filepath = FilePath.ROOM;
-        filepath.setPath("src/execute/assets/test_cases_file/room_data_for_test_case");
+        filepath.setPath("assets/test_cases_file/room_data_for_test_case");
         
         SportsCenter sportsCenter = SportsCenter.getInstance();
         
         sportsCenter.init();
         
-        filepath.setPath("src/execute/assets/room_data.txt");
+        filepath.setPath("assets/room_data.txt");
         
         String[] split = getOutput().split("\n");
         
@@ -471,7 +471,7 @@ public class SportsCenterTest  extends TestCase{
         
         
         FilePath filepath = FilePath.BOOKING;
-        filepath.setPath("src/execute/assets/test_cases_file/booking_data_for_test_case");
+        filepath.setPath("assets/test_cases_file/booking_data_for_test_case");
         
         
         SportsCenter sportsCenter = SportsCenter.getInstance();
@@ -481,7 +481,7 @@ public class SportsCenterTest  extends TestCase{
         
         sportsCenter.init();
         
-        filepath.setPath("src/execute/assets/booking_data.txt");
+        filepath.setPath("assets/booking_data.txt");
         
 
         
@@ -501,7 +501,7 @@ public class SportsCenterTest  extends TestCase{
         
         
         FilePath filepath = FilePath.BOOKING;
-        filepath.setPath("src/execute/assets/test_cases_file/booking_data_for_test_case_2");
+        filepath.setPath("assets/test_cases_file/booking_data_for_test_case_2");
         
         
         SportsCenter sportsCenter = SportsCenter.getInstance();
@@ -513,7 +513,7 @@ public class SportsCenterTest  extends TestCase{
         
         sportsCenter.init();
         
-        filepath.setPath("src/execute/assets/booking_data.txt");
+        filepath.setPath("assets/booking_data.txt");
         
 
         
@@ -530,19 +530,19 @@ public class SportsCenterTest  extends TestCase{
 
         
         FilePath roomTypePath = FilePath.ROOMTYPE;
-        roomTypePath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+        roomTypePath.setPath("assets/test_cases_file/saveDataTest");
         
         FilePath roomPath = FilePath.ROOM;
-        roomPath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+        roomPath.setPath("assets/test_cases_file/saveDataTest");
         
         FilePath userPath = FilePath.USER;
-        userPath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+        userPath.setPath("assets/test_cases_file/saveDataTest");
         
         FilePath bookingPath = FilePath.BOOKING;
-        bookingPath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+        bookingPath.setPath("assets/test_cases_file/saveDataTest");
         
         FilePath closingdatePath = FilePath.CLOSINGDATE;
-        closingdatePath.setPath("src/execute/assets/test_cases_file/saveDataTest");
+        closingdatePath.setPath("assets/test_cases_file/saveDataTest");
         
         SportsCenter sportsCenter = SportsCenter.getInstance();
         sportsCenter.saveData();
@@ -550,11 +550,11 @@ public class SportsCenterTest  extends TestCase{
         
         
         
-        roomTypePath.setPath("src/execute/assets/room_type_data.txt");
-        roomPath.setPath("src/execute/assets/room_data.txt");
-        userPath.setPath("src/execute/assets/user_data.txt");
-        bookingPath.setPath("src/execute/assets/booking_data.txt");
-        closingdatePath.setPath("src/execute/assets/closing_date_data.txt");
+        roomTypePath.setPath("assets/room_type_data.txt");
+        roomPath.setPath("assets/room_data.txt");
+        userPath.setPath("assets/user_data.txt");
+        bookingPath.setPath("assets/booking_data.txt");
+        closingdatePath.setPath("assets/closing_date_data.txt");
         
 
     
@@ -569,10 +569,11 @@ public class SportsCenterTest  extends TestCase{
         FilePath closingdatePath = FilePath.CLOSINGDATE;
 
         
-        String readOnlyPath = "src/execute/assets/test_cases_file/readOnly";
+        String readOnlyPath = "assets/test_cases_file/readOnly";
 
-        
-        File file = new File(sportsCenter.getDecodePath(readOnlyPath));
+        String path = sportsCenter.getDecodePath(readOnlyPath);
+        File file = new File(path);
+        System.out.println(path);
         file.createNewFile();
         file.setReadOnly();
 
@@ -590,11 +591,11 @@ public class SportsCenterTest  extends TestCase{
         sportsCenter.saveData();
 		
 
-		roomTypePath.setPath("src/execute/assets/room_type_data.txt");
-		roomPath.setPath("src/execute/assets/room_data.txt");
-		userPath.setPath("src/execute/assets/user_data.txt");
-		bookingPath.setPath("src/execute/assets/booking_data.txt");
-		closingdatePath.setPath("src/execute/assets/closing_date_data.txt");
+		roomTypePath.setPath("assets/room_type_data.txt");
+		roomPath.setPath("assets/room_data.txt");
+		userPath.setPath("assets/user_data.txt");
+		bookingPath.setPath("assets/booking_data.txt");
+		closingdatePath.setPath("assets/closing_date_data.txt");
 		
 		String[] output = getOutput().split("\n");
         for (int i=0;i<5;i++){

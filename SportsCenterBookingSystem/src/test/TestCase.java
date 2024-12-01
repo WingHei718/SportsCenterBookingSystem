@@ -64,19 +64,19 @@ public class TestCase{
 	}
     
     private static void setPathToBackup() {
-		roomTypePath.setPath("src/execute/assets/test_cases_file/roomType_backup");
-		roomPath.setPath("src/execute/assets/test_cases_file/room_backup");
-		userPath.setPath("src/execute/assets/test_cases_file/user_backup");		
-		bookingPath.setPath("src/execute/assets/test_cases_file/booking_backup");		
-		closingdatePath.setPath("src/execute/assets/test_cases_file/closing_backup");
+		roomTypePath.setPath("assets/test_cases_file/roomType_backup");
+		roomPath.setPath("assets/test_cases_file/room_backup");
+		userPath.setPath("assets/test_cases_file/user_backup");		
+		bookingPath.setPath("assets/test_cases_file/booking_backup");		
+		closingdatePath.setPath("assets/test_cases_file/closing_backup");
     }
     
     private static void restorePath() {
-		roomTypePath.setPath("src/execute/assets/room_type_data.txt");
-		roomPath.setPath("src/execute/assets/room_data.txt");
-		userPath.setPath("src/execute/assets/user_data.txt");
-		bookingPath.setPath("src/execute/assets/booking_data.txt");
-		closingdatePath.setPath("src/execute/assets/closing_date_data.txt");
+		roomTypePath.setPath("assets/room_type_data.txt");
+		roomPath.setPath("assets/room_data.txt");
+		userPath.setPath("assets/user_data.txt");
+		bookingPath.setPath("assets/booking_data.txt");
+		closingdatePath.setPath("assets/closing_date_data.txt");
     }
     
 

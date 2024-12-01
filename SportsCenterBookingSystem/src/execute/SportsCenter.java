@@ -1,10 +1,14 @@
 package execute;
 
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
@@ -18,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+
 public class SportsCenter {
 	private ArrayList<RoomType> allRoomTypes;
 	private ArrayList<Room> allRooms;
@@ -25,15 +30,15 @@ public class SportsCenter {
 	private ArrayList<Booking> allBookings;
 	private ArrayList<String> allClosingDates;
 	private static SportsCenter INSTANCE;
-	private String mainClassPath = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+	private String mainClassPath = SportsCenter.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 	
 	
 	public enum FilePath{
-		ROOMTYPE("src/execute/assets/room_type_data.txt"),
-		ROOM("src/execute/assets/room_data.txt"),
-		USER("src/execute/assets/user_data.txt"),
-		BOOKING("src/execute/assets/booking_data.txt"),
-		CLOSINGDATE("src/execute/assets/closing_date_data.txt");
+		ROOMTYPE("assets/room_type_data.txt"),
+		ROOM("assets/room_data.txt"),
+		USER("assets/user_data.txt"),
+		BOOKING("assets/booking_data.txt"),
+		CLOSINGDATE("assets/closing_date_data.txt");
 
 		private String path;
 
@@ -95,11 +100,10 @@ public class SportsCenter {
 
 	private void loadRoomType(String path) {
 		try{
-			File file = new File(path);
-			Scanner scanner = new Scanner(file);
+			BufferedReader reader = new BufferedReader(new FileReader(path));
 
-			while (scanner.hasNextLine()){
-				String data = scanner.nextLine();
+			String data;
+			while ((data = reader.readLine()) != null){
 				String[] splittedData = data.split(" ");
 				//format: TypeID Type Price
 				RoomType roomType = new RoomType(splittedData[0], splittedData[1], Integer.parseInt(splittedData[2]));
@@ -107,9 +111,9 @@ public class SportsCenter {
 			}
 			
 			System.out.println("Finished loading room types.");
-			scanner.close();
+			reader.close();
 		}
-		catch(FileNotFoundException e){
+		catch(IOException e){
 			System.out.println("Cannot find file at path: "+path);
 		}
 		
@@ -117,11 +121,10 @@ public class SportsCenter {
 
 	private void loadRoom(String path) {
 		try{
-			File file = new File(path);
-			Scanner scanner = new Scanner(file);
+			BufferedReader reader = new BufferedReader(new FileReader(path));
 
-			while (scanner.hasNextLine()){
-				String data = scanner.nextLine();
+			String data;
+			while ((data = reader.readLine()) != null){
 				String[] splittedData = data.split(" ");
 				//format: roomID roomTypeID
 				
@@ -136,9 +139,9 @@ public class SportsCenter {
 			}
 
 			System.out.println("Finished loading rooms.");
-			scanner.close();
+			reader.close();
 		}
-		catch(FileNotFoundException e){
+		catch(IOException e){
 			System.out.println("Cannot find file at path: "+path);
 		}
 		
@@ -146,11 +149,10 @@ public class SportsCenter {
   
 	private void loadUser(String path) {
 		try {
-			File file = new File(path);
-			Scanner scanner = new Scanner(file);
-			
-			while (scanner.hasNextLine()){
-				String data = scanner.nextLine();
+			BufferedReader reader = new BufferedReader(new FileReader(path));
+
+			String data;
+			while ((data = reader.readLine()) != null){
 				String[] splittedData = data.split(" ");
 				//format: userID, userRole, userPassword
 				User user = new User(splittedData[0], splittedData[1], splittedData[2]);
@@ -158,9 +160,9 @@ public class SportsCenter {
 			}
 			
 			System.out.println("Finished loading users.");
-			scanner.close();
+			reader.close();
 
-		} catch (FileNotFoundException e) {
+		} catch (IOException e) {
 			System.out.println("Cannot find file at path: "+path);
 		}
 		
@@ -168,11 +170,10 @@ public class SportsCenter {
 
 	private void loadBooking(String path) {
 		try{
-			File file = new File(path);
-			Scanner scanner = new Scanner(file);
+			BufferedReader reader = new BufferedReader(new FileReader(path));
 
-			while (scanner.hasNextLine()){
-				String data = scanner.nextLine();
+			String data;
+			while ((data = reader.readLine()) != null){
 				String[] splittedData = data.split(" ");
 				//format: RoomID UserID YYMMDD StartingTime EndingTime BookingID
 				
@@ -196,9 +197,9 @@ public class SportsCenter {
 			}
 
 			System.out.println("Finished loading bookings.");
-			scanner.close();
+			reader.close();
 		}
-		catch(FileNotFoundException e){
+		catch(IOException e){
 			System.out.println("Cannot find file at path: "+path);
 		}
 		
@@ -206,18 +207,17 @@ public class SportsCenter {
 	
 	private void loadClosingDate(String path) {
 		try {
-			File file = new File(path);
-			Scanner scanner = new Scanner(file);
-			
-			while (scanner.hasNextLine()){
-				String date = scanner.nextLine();
+			BufferedReader reader = new BufferedReader(new FileReader(path));
+
+			String date;
+			while ((date = reader.readLine()) != null){
 				allClosingDates.add(date);
 			}
 			
 			System.out.println("Finished loading closing dates.");
-			scanner.close();
+			reader.close();
 
-		} catch (FileNotFoundException e) {
+		} catch (IOException e) {
 			System.out.println("Cannot find file at path: "+path);
 		}
 		
