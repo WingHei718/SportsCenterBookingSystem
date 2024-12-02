@@ -29,8 +29,8 @@ http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
 2.  Execute the SportsCenterBookingSystem.jar:  
 
-Type "java -jar SportsCenterBookingSystem.jar" in  
-terminal for Mac / command prompts for Windows
+    Type "java -jar SportsCenterBookingSystem.jar" in  
+    terminal for Mac / command prompts for Windows
 
 3.  The program is running in command line interface now
 
