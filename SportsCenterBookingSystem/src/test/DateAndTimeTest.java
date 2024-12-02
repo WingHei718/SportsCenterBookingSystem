@@ -180,7 +180,10 @@ public class DateAndTimeTest  extends TestCase{
     }
     
     
-    
+    @Test
+    public void testIsTimeValid_ValidTime() {
+        Assert.assertTrue(DateAndTime.isTimeValid("12-0")); // Valid time
+    }
 
     
     

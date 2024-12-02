@@ -185,7 +185,7 @@ public class UserTest  extends TestCase{
 	        user.makeBooking(new Scanner(System.in));
 	    }
 	 
-	 @Test
+	 	@Test
 	    public void testMakeBooking_notAvail_2() {
 	    	User user=new User("002", "N", "123456");
 	        UserSessionManager.getInstance().setCurrentUser(user);
@@ -196,6 +196,20 @@ public class UserTest  extends TestCase{
 	        System.setIn(in);
 	        user.makeBooking(new Scanner(System.in));
 	    }
+
+		@Test
+	    public void testMakeBooking_notAvail_3() {
+	    	User user=new User("002", "N", "123456");
+	        UserSessionManager.getInstance().setCurrentUser(user);
+	        String input = "999999\n231201 13-15\nn\n";
+	        InputStream in = new ByteArrayInputStream(input.getBytes());
+	        
+  
+	        System.setIn(in);
+	        user.makeBooking(new Scanner(System.in));
+	    }
+	 
+	 
 	 
 	 
 	 
