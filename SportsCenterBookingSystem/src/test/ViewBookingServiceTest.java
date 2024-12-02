@@ -13,13 +13,19 @@ import java.util.Scanner;
 
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 
 
 public class ViewBookingServiceTest  extends TestCase{
-	@Before
-	public void init() {
+	@BeforeClass
+	public static void init() {
+        try {
+            setup();
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
 		SportsCenter sportsCenter = SportsCenter.getInstance();
         
 
@@ -42,12 +48,12 @@ public class ViewBookingServiceTest  extends TestCase{
         testingUser.addBooking(booking1);
         testingUser.addBooking(booking2);
         testingUser.addBooking(booking3);
-        room1.addBooking(booking1);
-        room1.addBooking(booking2);
-        room1.addBooking(booking3);
-	}
-	
-	User testingUser = new User("testingUser", "N", "123456");
+                room1.addBooking(booking1);
+                room1.addBooking(booking2);
+                room1.addBooking(booking3);
+    }
+            
+    static User testingUser = new User("testingUser", "N", "123456");
 
     @Test
     public void testViewBooking_p() {
