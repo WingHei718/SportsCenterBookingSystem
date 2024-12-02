@@ -54,19 +54,20 @@ Cmds for All Users:
 Important notes:  
 
 1.  Preloaded items:  
-    One Room type: Badminton, Price is $40 / h  
+    One Room type:
+      ID = 1, badminton, Price =  $40 / h  
     Two Users:  
       Admin:  
           ID = 001, Password = 123456  
       NormalUser:  
           ID = 002, Password = 123456  
 
-2. Please make sure to have one admin account to add some
+3. Please make sure to have one admin account to add some
    rooms before making any bookings
 
-3. Try not to edit the data files(.txt) directly
+4. Try not to edit the data files(.txt) directly
 
-4. If editing the data files, please strictly follow the
+5. If editing the data files, please strictly follow the
    formats provided
 
 ------------------------------------------------------------
